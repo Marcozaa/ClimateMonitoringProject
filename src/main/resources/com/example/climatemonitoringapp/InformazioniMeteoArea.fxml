@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.climatemonitoringapp.InformazioniMeteoAreaController">
+   <children>
+      <AnchorPane layoutX="-3.0" prefHeight="81.0" prefWidth="1121.0" style="-fx-background-color: #363948;">
+         <children>
+            <Label fx:id="nomeAreaLabel" layoutX="104.0" layoutY="30.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="Corbel Light" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="backButton" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#tornaIndietro" style="-fx-background-color: #363948;" text="&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="29.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ScrollPane fx:id="scrollPane" layoutX="-2.0" layoutY="79.0" prefHeight="321.0" prefWidth="863.0">
+         <content>
+            <VBox fx:id="vbox" prefHeight="319.0" prefWidth="865.0" />
+         </content>
+      </ScrollPane>
+      <Label layoutX="927.0" layoutY="95.0" prefHeight="22.0" prefWidth="108.0" text="Numero di rilevazioni">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="868.0" layoutY="95.0" prefHeight="22.0" prefWidth="53.0" text="Parametro">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="1037.0" layoutY="95.0" prefHeight="22.0" prefWidth="40.0" text="Media">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="868.0" layoutY="125.0" prefHeight="22.0" prefWidth="53.0" text="Vento">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="868.0" layoutY="155.0" prefHeight="22.0" prefWidth="53.0" text="Umidità">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="868.0" layoutY="186.0" prefHeight="22.0" prefWidth="53.0" text="Pressione">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="868.0" layoutY="215.0" prefHeight="22.0" prefWidth="53.0" text="Temperatura">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="868.0" layoutY="245.0" prefHeight="22.0" prefWidth="53.0" text="Precipitazioni">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="868.0" layoutY="276.0" prefHeight="22.0" prefWidth="53.0" text="Altitudine">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="868.0" layoutY="306.0" prefHeight="22.0" prefWidth="53.0" text="Massa">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="nRilevazioniVento" layoutX="927.0" layoutY="125.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniVento">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="nRilevazioniUmidita" layoutX="927.0" layoutY="155.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniUmidita">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="nRilevazioniPressione" layoutX="927.0" layoutY="186.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniPressione">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="nRilevazioniTemperatura" layoutX="927.0" layoutY="215.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniTemperatura">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="nRilevazioniPrecipitazioni" layoutX="927.0" layoutY="245.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniPrecipitazioni">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="nRilevazioniAltitudine" layoutX="927.0" layoutY="276.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniAltitudine">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="nRilevazioniMassa" layoutX="927.0" layoutY="306.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniMassa">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="mediaVento" layoutX="1031.0" layoutY="125.0" prefHeight="22.0" prefWidth="53.0" text="mediaVento">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="mediaUmidita" layoutX="1031.0" layoutY="155.0" prefHeight="22.0" prefWidth="53.0" text="mediaUmidita">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="mediaPressione" layoutX="1031.0" layoutY="186.0" prefHeight="22.0" prefWidth="53.0" text="mediaPressione">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="mediaTemperatura" layoutX="1031.0" layoutY="215.0" prefHeight="22.0" prefWidth="53.0" text="mediaTemperatura">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="mediaPrecipitazioni" layoutX="1031.0" layoutY="245.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniPrecipitazioni">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="mediaAltitudine" layoutX="1031.0" layoutY="276.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniAltitudine">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="mediaMassa" layoutX="1031.0" layoutY="306.0" prefHeight="22.0" prefWidth="53.0" text="nRilevazioniMassa">
+         <font>
+            <Font name="Nirmala UI" size="11.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
