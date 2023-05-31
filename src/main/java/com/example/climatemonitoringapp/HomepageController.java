@@ -16,7 +16,7 @@ import java.io.IOException;
 public class HomepageController {
 
     @FXML
-    private TextField cittaCercata;
+    private TextField cittaCercata, latitudineInserita, longitudineInserita;
     @FXML
     private Button loginOperatoriCTA;
     @FXML
@@ -129,6 +129,26 @@ public class HomepageController {
             scene = new Scene(root);
             stage.setScene(scene);
         }
+    }
+
+    public void cercaCittaByCoordinate(ActionEvent e ) throws IOException {
+        String latitudine = latitudineInserita.getText();
+        String longitudine = longitudineInserita.getText();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("RisultatiCitta.fxml"));
+        try {
+            root = loader.load();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+
+        RisultatiCittaController rcController = loader.getController();
+
+        rcController.filterByCoordinates(new Coordinate(Double.parseDouble(latitudine), Double.parseDouble(longitudine)));
+
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 
 

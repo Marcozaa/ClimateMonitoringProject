@@ -19,5 +19,10 @@
          </font>
       </Label>
       <Button fx:id="visualizzaButton" layoutX="55.0" layoutY="169.0" mnemonicParsing="false" onAction="#visualizzaDatiArea" text="Visualizza" />
+      <Label fx:id="distanzaLabel" alignment="CENTER" layoutY="14.0" prefHeight="43.0" prefWidth="176.0" text="Label" textFill="#838383">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

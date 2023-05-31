@@ -7,8 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -16,7 +18,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RisultatiCittaController {
 
@@ -24,9 +28,9 @@ public class RisultatiCittaController {
     @FXML
     Label cittaLabel;
     @FXML
-    GridPane resultsGrid;
+    ScrollPane scrollPane;
     @FXML
-    AnchorPane testpane;
+    VBox vbox;
 
 
 
@@ -34,9 +38,12 @@ public class RisultatiCittaController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private User currentUser;
 
 
     private String cittaCercata;
+
+    final int NUM_AREAS_BY_COORDINATES = 3;
 
     private List<AreaInteresse> areeInteressePossibili = new ArrayList<>();
 
@@ -72,6 +79,67 @@ public class RisultatiCittaController {
         filterFile(cittaCercata);
     }
 
+    public void filterByCoordinates(Coordinate coordinate) throws IOException {
+        List<List<String>> records = new ArrayList<>();
+        List<Double> distances = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/AreeInteresse.csv"))){
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                Coordinate currentCoords = new Coordinate(Double.parseDouble(values[2]),Double.parseDouble(values[3]));
+                double distance = coordinate.getDistance(currentCoords);
+                records.add(Arrays.asList(values));
+                distances.add(distance);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (int j=0; j<records.size(); j++){
+            System.out.println(records.get(j).get(0));
+            System.out.println(distances.get(j));
+        }
+
+        selectionSort(distances,records);
+
+
+        for (int j = 0; j < NUM_AREAS_BY_COORDINATES; j++) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AreaResult.fxml"));
+            AnchorPane pane = loader.load();
+            AreaResultController arc = loader.getController();
+            arc.setAreaName(records.get(j).get(0));
+            arc.setAreaState(records.get(j).get(1));
+            arc.setAreaCoords(records.get(j).get(2) + "N, " + records.get(j).get(3) + "E");
+            arc.setDistance(metersToKm(distances.get(j)));
+            //Button button = new Button("Button " + i + " " + j); //create new Button
+            //button.setLayoutX(30 * i); //set x coordinate
+            vbox.getChildren().add(pane);
+
+        }
+
+
+    }
+
+    private void selectionSort(List<Double> distances, List<List<String>> records){
+        for(int i=0; i< distances.size(); i++){
+            int currentIndex = i;
+            for(int j=i+1; j<distances.size(); j++){
+                if(distances.get(j)<distances.get(currentIndex)){
+                    Collections.swap(records, currentIndex, j);
+
+
+                    double temp = distances.get(currentIndex);
+                    distances.set(currentIndex,distances.get(j));
+                    distances.set(j,temp);
+                }
+            }
+        }
+
+    }
+
+    private double metersToKm(double meters){
+        return (double) (Math.round( meters/1000*10.0)/10.0);
+    }
     private void filterFile(String cittaCercata) throws IOException {
         List<List<String>> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/AreeInteresse.csv"))){
@@ -111,11 +179,15 @@ public class RisultatiCittaController {
 
             //Button button = new Button("Button " + i + " " + j); //create new Button
             //button.setLayoutX(30 * i); //set x coordinate
-            resultsGrid.add(pane, 0, j); //add button to the GridPane
+            vbox.getChildren().add(pane);
+
         }
 
     }
 
+    private void setCurrentUser(User currentUser){
+        this.currentUser = currentUser;
+    }
 
     public void tornaIndietro(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));

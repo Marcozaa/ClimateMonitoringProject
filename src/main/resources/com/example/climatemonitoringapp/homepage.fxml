@@ -61,5 +61,17 @@
       <TextField id="cittaInput" fx:id="cittaCercata" layoutX="298.0" layoutY="24.0" prefHeight="25.0" prefWidth="194.0" promptText="Inserisci il nome della città..." />
       <Text layoutX="222.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome città" />
       <Button id="SearchCity" fx:id="cercaCittaButton" layoutX="508.0" layoutY="24.0" mnemonicParsing="false" onAction="#cercaCitta" text="Cerca" />
+      <AnchorPane layoutX="222.0" layoutY="100.0" prefHeight="81.0" prefWidth="362.0" style="-fx-background-color: #363948;">
+         <children>
+            <TextField id="cittaInput" fx:id="latitudineInserita" layoutX="100.0" layoutY="28.0" prefHeight="25.0" prefWidth="93.0" promptText="Latitudine" />
+            <TextField id="cittaInput" fx:id="longitudineInserita" layoutX="205.0" layoutY="28.0" prefHeight="25.0" prefWidth="93.0" promptText="Longitudine" />
+            <Text fill="WHITE" layoutX="14.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordinate">
+               <font>
+                  <Font name="Georgia Bold" size="13.0" />
+               </font>
+            </Text>
+            <Button id="SearchCity" fx:id="cercaCittaCoordinate" layoutX="305.0" layoutY="29.0" mnemonicParsing="false" onAction="#cercaCittaByCoordinate" text="Cerca" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/Coordinate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/AreaResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/AreaResultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RisultatiCittaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RisultatiCittaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/AreaResult.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/AreaResult.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/RisultatiCitta.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/RisultatiCitta.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/homepage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +86,7 @@
       <workItem from="1685220324041" duration="11488000" />
       <workItem from="1685343944198" duration="4945000" />
       <workItem from="1685452957351" duration="2508000" />
-      <workItem from="1685519134080" duration="872000" />
+      <workItem from="1685519134080" duration="6824000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1682953252452</created>
@@ -109,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685519239078</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="first commit">
+      <created>1685521055335</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685521055335</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

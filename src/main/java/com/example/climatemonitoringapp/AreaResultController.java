@@ -12,12 +12,14 @@ import javafx.stage.Stage;
 public class AreaResultController {
 
     @FXML
-    Label areaName;
+    Label areaName,distanzaLabel;
     @FXML
     Label areaCoords;
 
     @FXML
     Label areaState;
+
+    private double distance = 0.0;
 
     private Stage stage;
     private Scene scene;
@@ -32,6 +34,15 @@ public class AreaResultController {
 
     public void setAreaState(String state){
         areaState.setText(state);
+    }
+
+    public void setDistance(double distance){
+        this.distance = distance;
+        distanzaLabel.setText("Distanza " + String.valueOf(distance) + " km");
+    }
+
+    public void setAreaDistance(){
+
     }
 
 
