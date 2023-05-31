@@ -14,6 +14,11 @@ public class AreaInteresse {
         this.stato = stato;
     }
 
+    public AreaInteresse(String nome) {
+        this.nome = nome;
+
+    }
+
     public String getNome() {
         return nome;
     }
@@ -30,6 +35,8 @@ public class AreaInteresse {
     	return stato;
     }
 
-
-
+    @Override
+    public String toString() {
+        return nome;
+    }
 }

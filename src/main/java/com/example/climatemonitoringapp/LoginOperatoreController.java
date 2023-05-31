@@ -24,6 +24,7 @@ public class LoginOperatoreController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private User currentUser;
 
 
     public void checkCredenziali(ActionEvent e) throws IOException {
@@ -63,6 +64,7 @@ public class LoginOperatoreController {
 
             HomepageController controller = loader.getController();
             controller.setLoggedUser(new User(username, password));
+            controller.userCheck();
 
             stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -88,9 +90,17 @@ public class LoginOperatoreController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         root = loader.load();
 
+        HomepageController controller = loader.getController();
+        controller.setLoggedUser(currentUser);
+        controller.userCheck();
+
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    public void setLoggedUser(User user){
+        this.currentUser = user;
     }
 
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.climatemonitoringapp.InserimentoAreaInteresseController">
+   <children>
+      <AnchorPane prefHeight="81.0" prefWidth="604.0" style="-fx-background-color: #363948;">
+         <children>
+            <Button fx:id="backButton1" layoutX="7.0" layoutY="12.0" mnemonicParsing="false" onAction="#tornaIndietro" style="-fx-background-color: #363948;" text="&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="29.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label layoutX="33.0" layoutY="146.0" text="Nome area">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="176.0" text="Stato">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="LatitudineAreaLabel" layoutX="33.0" layoutY="207.0" text="Latitudine">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="LongitudineAreaLabel" layoutX="33.0" layoutY="238.0" text="Longitudine">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nomeArea" layoutX="245.0" layoutY="146.0" prefHeight="25.0" prefWidth="169.0" />
+      <Button fx:id="buttonInserimentoDati" layoutX="490.0" layoutY="326.0" mnemonicParsing="false" onAction="#inserisciDati" prefHeight="57.0" prefWidth="95.0" text="Inserisci area" />
+      <TextField fx:id="statoArea" layoutX="245.0" layoutY="176.0" prefHeight="25.0" prefWidth="169.0" />
+      <TextField fx:id="latitudineArea" layoutX="245.0" layoutY="207.0" prefHeight="25.0" prefWidth="169.0" />
+      <TextField fx:id="longitudineArea" layoutX="245.0" layoutY="238.0" prefHeight="25.0" prefWidth="169.0" />
+   </children>
+</AnchorPane>

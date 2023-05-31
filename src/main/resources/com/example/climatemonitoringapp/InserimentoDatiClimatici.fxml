@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.climatemonitoringapp.InserimentoDatiController">
+   <children>
+      <AnchorPane fx:id="noDataPanel" layoutX="201.0" layoutY="138.0" prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane layoutX="-1.0" prefHeight="81.0" prefWidth="604.0" style="-fx-background-color: #363948;">
+         <children>
+            <Label fx:id="nomeCentroLabel" layoutX="118.0" layoutY="30.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="Corbel Light" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="backButton1" layoutX="7.0" layoutY="12.0" mnemonicParsing="false" onAction="#tornaIndietro" style="-fx-background-color: #363948;" text="&lt;" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="29.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ComboBox fx:id="citySelector" layoutX="27.0" layoutY="101.0" prefWidth="150.0" />
+      <Button fx:id="backButton" layoutX="7.0" layoutY="12.0" mnemonicParsing="false" onAction="#tornaIndietro" style="-fx-background-color: #363948;" text="&lt;" textFill="WHITE">
+         <font>
+            <Font name="Ebrima Bold" size="29.0" />
+         </font>
+      </Button>
+      <Label fx:id="labelVento" layoutX="27.0" layoutY="146.0" text="Vento">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelUmidita" layoutX="27.0" layoutY="176.0" text="Umidita">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPressione" layoutX="27.0" layoutY="207.0" text="Pressione">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTemperatura" layoutX="27.0" layoutY="238.0" text="Temperatura">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPrecipitazioni" layoutX="27.0" layoutY="271.0" text="Precipitazioni">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelAltitudine" layoutX="27.0" layoutY="307.0" text="Altitudine ghiacciai">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelMassa" layoutX="27.0" layoutY="342.0" text="Massa ghiacciai">
+         <font>
+            <Font name="Georgia" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="scoreVento" layoutX="239.0" layoutY="146.0" prefHeight="25.0" prefWidth="40.0" />
+      <Button fx:id="buttonInserimentoDati" layoutX="484.0" layoutY="326.0" mnemonicParsing="false" onAction="#inserisciDati" prefHeight="57.0" prefWidth="95.0" text="Button" />
+      <TextField fx:id="scoreUmidita" layoutX="239.0" layoutY="176.0" prefHeight="25.0" prefWidth="40.0" />
+      <TextField fx:id="scorePressione" layoutX="239.0" layoutY="207.0" prefHeight="25.0" prefWidth="40.0" />
+      <TextField fx:id="scoreTemperatura" layoutX="239.0" layoutY="238.0" prefHeight="25.0" prefWidth="40.0" />
+      <TextField fx:id="scorePrecipitazioni" layoutX="239.0" layoutY="271.0" prefHeight="25.0" prefWidth="40.0" />
+      <TextField fx:id="scoreAltitudine" layoutX="239.0" layoutY="307.0" prefHeight="25.0" prefWidth="40.0" />
+      <TextField fx:id="scoreMassa" layoutX="239.0" layoutY="342.0" prefHeight="25.0" prefWidth="40.0" />
+   </children>
+
+
+</AnchorPane>

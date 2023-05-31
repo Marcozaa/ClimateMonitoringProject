@@ -26,11 +26,6 @@
                   <Font name="Marlett" size="12.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutY="269.0" prefHeight="50.0" prefWidth="206.0" text="Inserimento valori" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-               <font>
-                  <Font name="Marlett" size="12.0" />
-               </font>
-            </Label>
             <Button fx:id="loginOperatoriCTA" layoutY="183.0" mnemonicParsing="false" onAction="#loginOperatoriCTA" prefHeight="22.0" prefWidth="206.0" style="-fx-background-color: transparent;" text="Login operatori" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="12.0" />
@@ -46,7 +41,17 @@
                   <Font name="Georgia" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="creazioneCentroCTA" layoutY="233.0" mnemonicParsing="false" onAction="#creazioneCentroCTA" prefHeight="22.0" prefWidth="206.0" style="-fx-background-color: transparent;" text="Creazione centro" textFill="WHITE">
+            <Button fx:id="creazioneCentroCTA" layoutY="215.0" mnemonicParsing="false" onAction="#creazioneCentroCTA" prefHeight="22.0" prefWidth="206.0" style="-fx-background-color: transparent;" text="Creazione centro" textFill="WHITE">
+               <font>
+                  <Font name="Marlett" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="inserimentoValoriCTA" layoutY="245.0" mnemonicParsing="false" onAction="#inserimentoValoriCTA" prefHeight="22.0" prefWidth="206.0" style="-fx-background-color: transparent;" text="Inserimento Valori" textFill="WHITE">
+               <font>
+                  <Font name="Marlett" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="inserimentoAreaCTA" layoutY="274.0" mnemonicParsing="false" onAction="#inserimentoAreaCTA" prefHeight="22.0" prefWidth="206.0" style="-fx-background-color: transparent;" text="Inserimento area di interesse" textFill="WHITE">
                <font>
                   <Font name="Marlett" size="12.0" />
                </font>

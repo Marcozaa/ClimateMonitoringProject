@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="70.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.climatemonitoringapp.DatiMeteoAreaComponentController">
+   <children>
+      <Label fx:id="nomeCentroLabel" layoutX="23.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Georgia Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="ventoLabel" layoutX="180.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Georgia" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="dataLabel" layoutX="642.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="oraLabel" layoutX="776.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Consolas" size="15.0" />
+         </font>
+      </Label>
+      <Line endX="-99.0" endY="61.0" layoutX="710.0" layoutY="9.0" startX="-98.0" startY="-8.999996185302734" strokeWidth="4.0">
+         <stroke>
+            <RadialGradient centerX="0.5220994475138122" centerY="0.542654028436019" focusAngle="-116.57" focusDistance="0.04597701149425282" radius="0.3390804597701149">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6299999952316284" green="0.5836949944496155" blue="0.23309999704360962" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </stroke>
+         <fill>
+            <RadialGradient centerX="0.48895027624309395" centerY="0.542654028436019" focusAngle="-116.57" focusDistance="0.04597701149425282" radius="0.1896551724137931">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6299999952316284" green="0.5836949944496155" blue="0.23309999704360962" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </fill>
+      </Line>
+      <Label fx:id="umiditaLabel" layoutX="238.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Georgia" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="pressioneLabel" layoutX="297.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Georgia" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="temperaturaLabel" layoutX="362.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Georgia" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="precipitazioniLabel" layoutX="423.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Georgia" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="altitudineLabel" layoutX="488.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Georgia" size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="massaLabel" layoutX="550.0" layoutY="29.0" text="Label">
+         <font>
+            <Font name="Georgia" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

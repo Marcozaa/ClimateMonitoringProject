@@ -28,12 +28,11 @@ public class RegistrazioneOperatoreController {
         String username = usernameField.getText();
         String password = passwordField.getText();
         try {
-            Files.write(Paths.get("src/main/resources/credenzialiOperatori.txt"), ("\n"+username+"\n"+password).getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get("src/main/resources/credenzialiOperatori.txt"), (username+"\n"+password+"\n").getBytes(), StandardOpenOption.APPEND);
         }catch (IOException ex) {
 
         }
-        System.out.println(username);
-        System.out.println(password);
+
     }
 
     public void tornaIndietroLogin(ActionEvent e) throws IOException {

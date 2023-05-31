@@ -108,6 +108,7 @@ public class RisultatiCittaController {
             arc.setAreaName(areeInteressePossibili.get(j).getNome());
             arc.setAreaState(areeInteressePossibili.get(j).getStato());
             arc.setAreaCoords(areeInteressePossibili.get(j).getCoordX() + "N, " + areeInteressePossibili.get(j).getCoordY() + "E");
+
             //Button button = new Button("Button " + i + " " + j); //create new Button
             //button.setLayoutX(30 * i); //set x coordinate
             resultsGrid.add(pane, 0, j); //add button to the GridPane
