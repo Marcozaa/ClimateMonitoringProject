@@ -91,7 +91,9 @@ public class LoginOperatoreController {
         root = loader.load();
 
         HomepageController controller = loader.getController();
-        controller.setLoggedUser(currentUser);
+        if(currentUser!=null) {
+            controller.setLoggedUser(currentUser);
+        }
         controller.userCheck();
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();

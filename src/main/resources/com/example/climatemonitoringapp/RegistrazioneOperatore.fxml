@@ -9,24 +9,23 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.climatemonitoringapp.RegistrazioneOperatoreController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #363948;">
          <children>
-            <TextField fx:id="usernameField" layoutX="226.0" layoutY="109.0" />
-            <Label layoutX="244.0" layoutY="72.0" text="Username" textFill="WHITE">
+            <TextField fx:id="usernameField" layoutX="225.0" layoutY="30.0" />
+            <Label layoutX="258.0" layoutY="7.0" text="Username" textFill="WHITE">
                <font>
-                  <Font name="Ebrima Bold" size="24.0" />
+                  <Font name="Ebrima Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="248.0" layoutY="144.0" text="Password" textFill="WHITE">
+            <Label layoutX="259.0" layoutY="73.0" text="Password" textFill="WHITE">
                <font>
-                  <Font name="Ebrima Bold" size="24.0" />
+                  <Font name="Ebrima Bold" size="18.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordField" layoutX="227.0" layoutY="175.0" />
-            <Button fx:id="registerButton" layoutX="233.0" layoutY="236.0" mnemonicParsing="false" onAction="#registraOperatore" prefHeight="46.0" prefWidth="135.0" text="Registrati">
+            <PasswordField fx:id="passwordField" layoutX="226.0" layoutY="96.0" />
+            <Button fx:id="registerButton" layoutX="438.0" layoutY="312.0" mnemonicParsing="false" onAction="#registraOperatore" prefHeight="46.0" prefWidth="135.0" text="Registrati">
                <effect>
                   <DropShadow blurType="GAUSSIAN" height="92.08" radius="46.09" width="94.28">
                      <color>
@@ -38,11 +37,35 @@
                   <Font name="Mongolian Baiti" size="17.0" />
                </font>
             </Button>
-            <Button fx:id="loginOperatoriCTA" layoutX="211.0" layoutY="314.0" mnemonicParsing="false" onAction="#tornaIndietroLogin" style="-fx-background-color: transparent;" text="Oppure effettua il login" textFill="#a8a8a8" underline="true">
+            <Button fx:id="loginOperatoriCTA" layoutX="415.0" layoutY="358.0" mnemonicParsing="false" onAction="#tornaIndietroLogin" style="-fx-background-color: transparent;" text="Oppure effettua il login" textFill="#a8a8a8" underline="true">
                <font>
                   <Font name="Verdana Italic" size="14.0" />
                </font>
             </Button>
+            <TextField fx:id="codFiscField" layoutX="225.0" layoutY="281.0" />
+            <PasswordField fx:id="emailField" layoutX="225.0" layoutY="348.0" />
+            <TextField fx:id="CognomeField" layoutX="226.0" layoutY="214.0" />
+            <TextField fx:id="nomeField" layoutX="225.0" layoutY="154.0" />
+            <Label layoutX="260.0" layoutY="191.0" text="Cognome" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="274.0" layoutY="131.0" text="Nome" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="241.0" layoutY="257.0" text="Codice Fiscale" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="277.0" layoutY="324.0" text="Email" textFill="WHITE">
+               <font>
+                  <Font name="Ebrima Bold" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

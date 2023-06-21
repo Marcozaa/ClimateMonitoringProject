@@ -25,7 +25,54 @@
       </AnchorPane>
       <ScrollPane fx:id="scrollPane" layoutX="-2.0" layoutY="79.0" prefHeight="321.0" prefWidth="863.0">
          <content>
-            <VBox fx:id="vbox" prefHeight="319.0" prefWidth="865.0" />
+            <VBox fx:id="vbox" prefHeight="319.0" prefWidth="865.0">
+               <children>
+                  <AnchorPane prefHeight="36.0" prefWidth="865.0">
+                     <children>
+                        <Label layoutX="171.0" layoutY="7.0" prefHeight="22.0" prefWidth="53.0" text="Vento">
+                           <font>
+                              <Font name="Nirmala UI" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="8.0" prefHeight="22.0" prefWidth="85.0" text="Nome centro">
+                           <font>
+                              <Font name="Nirmala UI" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="215.0" layoutY="7.0" prefHeight="22.0" prefWidth="53.0" text="Umidità">
+                           <font>
+                              <Font name="Nirmala UI" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="269.0" layoutY="7.0" prefHeight="22.0" prefWidth="53.0" text="Pressione">
+                           <font>
+                              <Font name="Nirmala UI" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="329.0" layoutY="7.0" prefHeight="22.0" prefWidth="75.0" text="Temperatura">
+                           <font>
+                              <Font name="Nirmala UI" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="404.0" layoutY="8.0" prefHeight="22.0" prefWidth="70.0" text="Precipitazioni">
+                           <font>
+                              <Font name="Nirmala UI" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="483.0" layoutY="8.0" prefHeight="22.0" prefWidth="53.0" text="Altitudine">
+                           <font>
+                              <Font name="Nirmala UI" size="11.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="540.0" layoutY="7.0" prefHeight="22.0" prefWidth="53.0" text="Massa">
+                           <font>
+                              <Font name="Nirmala UI" size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
          </content>
       </ScrollPane>
       <Label layoutX="927.0" layoutY="95.0" prefHeight="22.0" prefWidth="108.0" text="Numero di rilevazioni">

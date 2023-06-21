@@ -96,8 +96,6 @@ public class InformazioniMeteoAreaController {
                 label.setLayoutY(offsetY+=150);
                 anchorPane2.getChildren().add(label);
                 vbox.getChildren().add(anchorPane2);
-
-
         }
 
         for(List<String> record : parametriArea){
