@@ -3,6 +3,9 @@ package com.example.climatemonitoringapp;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * Componente che gestisce la visualizzazione dei dati di un'area di interesse
+ */
 public class DatiMeteoAreaComponentController {
     @FXML
     private Label nomeCentroLabel;

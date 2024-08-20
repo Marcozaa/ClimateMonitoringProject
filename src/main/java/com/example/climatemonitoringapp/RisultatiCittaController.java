@@ -22,6 +22,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Questa classe gestisce la visualizzazione dei risultati di ricerca di una città
+ * sia per coordinate che per nome
+ */
 public class RisultatiCittaController {
 
 
@@ -68,6 +73,10 @@ public class RisultatiCittaController {
     }
 
 
+    /**
+     * Questo metodo imposta come testo nella label in alto a sinistra della UI la citta ricercata.
+     * @param citta
+     */
     public void displayName(String citta){
         cittaLabel.setText("Risultati di ricerca per: " + citta );
 
@@ -79,6 +88,11 @@ public class RisultatiCittaController {
         filterFile(cittaCercata);
     }
 
+
+    /**
+     * Questo metodo scandisce il file AreeInteresse.csv e filtra le aree di interesse in base
+     * alla città più vicina alle coordinate inserite dall'utente
+     */
     public void filterByCoordinates(Coordinate coordinate) throws IOException {
         List<List<String>> records = new ArrayList<>();
         List<Double> distances = new ArrayList<>();
@@ -120,6 +134,7 @@ public class RisultatiCittaController {
 
     }
 
+
     private void selectionSort(List<Double> distances, List<List<String>> records){
         for(int i=0; i< distances.size(); i++){
             int currentIndex = i;
@@ -140,6 +155,12 @@ public class RisultatiCittaController {
     private double metersToKm(double meters){
         return (double) (Math.round( meters/1000*10.0)/10.0);
     }
+
+    /**
+     * Questo metodo filtra il file AreeInteresse.csv in base alla città inserita dall'utente
+     * @param cittaCercata
+     * @throws IOException
+     */
     private void filterFile(String cittaCercata) throws IOException {
         List<List<String>> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/AreeInteresse.csv"))){

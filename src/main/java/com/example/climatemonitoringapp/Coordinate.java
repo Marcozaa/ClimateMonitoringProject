@@ -1,9 +1,20 @@
 package com.example.climatemonitoringapp;
 
+/**
+ * Classe che rappresenta le coordinate geografiche di un'area di interesse
+ */
 public class Coordinate {
+    /**
+     * Attributi
+     */
     private double lat;
     private double lon;
 
+    /**
+     * Costruttore
+     * @param lat
+     * @param lon
+     */
     public Coordinate(double lat, double lon){
         this.lat = lat;
         this.lon = lon;
@@ -17,6 +28,11 @@ public class Coordinate {
         return lon;
     }
 
+    /**
+     * Metodo che calcola la distanza tra due coordinate
+     * @param coords2 Coordinate con cui calcolare la distanza
+     * @return Distanza tra le due coordinate
+     */
     public double getDistance(Coordinate coords2){
         double lat1 = this.lat;
         double lon1 = this.lon;

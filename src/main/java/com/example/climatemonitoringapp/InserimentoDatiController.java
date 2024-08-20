@@ -19,7 +19,10 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-
+/**
+ * Questa classe gestisce l'inserimento dei dati meteo di un'area di interesse
+ *
+ */
 public class InserimentoDatiController {
 
     @FXML
@@ -28,6 +31,8 @@ public class InserimentoDatiController {
     private ComboBox citySelector;
     @FXML
     private Button buttonInserimentoDati;
+
+
     @FXML
     private TextField scoreVento;
     @FXML
@@ -73,6 +78,11 @@ public class InserimentoDatiController {
 
     }
 
+    /**
+     * Metodo che viene chiamato quando si clicca sul bottone "Inserisci Dati"
+     * permette di inserire le citta controllate dall'utente nella combobox
+     * @throws IOException
+     */
     public void fillOptions() throws IOException {
         List<List<String>> CentroUser = new ArrayList<>();
         List<String> CittaControllateUser = new ArrayList<>();

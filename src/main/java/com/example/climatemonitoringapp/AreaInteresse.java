@@ -1,5 +1,9 @@
 package com.example.climatemonitoringapp;
 
+/**
+ * Classe che rappresenta un'area di interesse
+ * Contiene il nome, le coordinate e lo stato di un'area di interesse
+ */
 public class AreaInteresse {
     private String nome;
     private String coordX;
@@ -19,18 +23,34 @@ public class AreaInteresse {
 
     }
 
+    /**
+     * Metodo che restituisce il nome dell'area di interesse
+     * @return
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * Metodo che restituisce le coordinate dell'area di interesse
+     * @return
+     */
     public String getCoordX() {
         return coordX;
     }
 
+    /**
+     * Metodo che restituisce le coordinate dell'area di interesse
+     * @return
+     */
     public String getCoordY() {
         return coordY;
     }
 
+    /**
+     * Metodo che restituisce lo stato dell'area di interesse
+     * @return
+     */
     public String getStato() {
     	return stato;
     }

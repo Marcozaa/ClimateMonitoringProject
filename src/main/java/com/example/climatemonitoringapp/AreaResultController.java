@@ -9,6 +9,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+/**
+ * Componente che gestisce la visualizzazione dei dati di un'area d'interesse
+ */
 public class AreaResultController {
 
     @FXML
@@ -36,6 +39,9 @@ public class AreaResultController {
         areaState.setText(state);
     }
 
+    /**
+     * Questo metodo imposta come testo della label la distanza dalle coordinate inserite
+     */
     public void setDistance(double distance){
         this.distance = distance;
         distanzaLabel.setText("Distanza " + String.valueOf(distance) + " km");

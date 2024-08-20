@@ -1,5 +1,7 @@
 package com.example.climatemonitoringapp;
 
+import animatefx.animation.FadeIn;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +11,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import animatefx.animation.Bounce;
 
 import java.io.IOException;
 
+/**
+ * Questa classe gestisce la homepage dell'applicazione
+ * Al suo interno sono presenti i metodi per la ricerca di una città, per il login degli operatori e per la creazione di un nuovo centro di monitoraggio
+ * @Author: Marco, Stefano
+ */
 public class HomepageController {
 
     @FXML
@@ -30,6 +40,8 @@ public class HomepageController {
 
     private User currentUser;
 
+    private Pane pane1;
+
 
 
     private Stage stage;
@@ -45,9 +57,12 @@ public class HomepageController {
             creazioneCentroCTA.setVisible(true);
             inserimentoValoriCTA.setVisible(true);
             inserimentoAreaCTA.setVisible(true);}
+
     }
     public void initialize(){
         userCheck();
+
+
     }
     public void cercaCitta(ActionEvent e) throws IOException {
         String city = cittaCercata.getText();
@@ -150,6 +165,13 @@ public class HomepageController {
         scene = new Scene(root);
         stage.setScene(scene);
     }
+
+
+    public void testPane(){
+        System.out.println("reyu");
+        new FadeIn(pane1).play();
+    }
+
 
 
 

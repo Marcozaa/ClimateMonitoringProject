@@ -13,6 +13,9 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Questa classe gestisce l'inserimento di un'area di interesse
+ */
 public class InserimentoAreaInteresseController {
     private Stage stage;
     private Scene scene;
@@ -48,6 +51,14 @@ public class InserimentoAreaInteresseController {
         stage.setScene(scene);
     }
 
+    /**
+     * Questo metodo converte i dati inseriti in una stringa unica da inserire nel file AreeInteresse.csv
+     * @param nome
+     * @param stato
+     * @param latitudine
+     * @param longitudine
+     * @return
+     */
     public String convertStringsToCSV(String nome,String stato, String latitudine,String longitudine){
         StringBuilder sb = new StringBuilder();
         sb.append(nome);
@@ -63,6 +74,10 @@ public class InserimentoAreaInteresseController {
 
     }
 
+    /**
+     * Questo metodo inserisce i dati di un'area di interesse nel file AreeInteresse.csv
+     * @param e
+     */
     public void inserisciDati(ActionEvent e){
         String nome = nomeArea.getText();
         String stato = statoArea.getText();

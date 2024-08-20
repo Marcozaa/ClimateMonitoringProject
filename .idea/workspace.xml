@@ -10,13 +10,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/AreaInteresse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/AreaInteresse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/AreaResultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/AreaResultController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/Coordinate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/Coordinate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/CreazioneCentroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/CreazioneCentroController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/DatiMeteoAreaComponentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/DatiMeteoAreaComponentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InformazioniMeteoAreaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InformazioniMeteoAreaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoAreaInteresseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoAreaInteresseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoDatiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoDatiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/LoginOperatoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/LoginOperatoreController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AreeInteresse.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AreeInteresse.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/InformazioniMeteoArea.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/InformazioniMeteoArea.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RegistrazioneOperatoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RegistrazioneOperatoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RisultatiCittaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RisultatiCittaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/LoginOperatore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/LoginOperatore.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/RegistrazioneOperatore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/RegistrazioneOperatore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/parametriClimatici.dati.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/parametriClimatici.dati.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/homepage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/homepage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,15 +59,19 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/marco/IdeaProjects/ClimateMonitoringApp/src/main/resources",
-    "project.structure.last.edited": "Artifacts",
+    "last_opened_file_path": "C:/Users/marco/Desktop/postgresql-42.7.3 (1).jar",
+    "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.editor"
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -63,22 +81,17 @@
       <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\resources\com\example\climatemonitoringapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\resources" />
-      <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\java" />
       <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\resources\com\example\climatemonitoringapp" />
       <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\java\com\example\climatemonitoringapp" />
+      <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\resources" />
+      <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\java" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="ClimateMonitoringApp.jar" type="JarApplication" temporary="true">
+    <configuration name="ClimateMonitoringApp.jar" type="JarApplication">
       <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/ClimateMonitoringApp_jar/ClimateMonitoringApp.jar" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JAR Application.ClimateMonitoringApp.jar" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -105,7 +118,24 @@
       <workItem from="1686490345611" duration="3254000" />
       <workItem from="1686560417165" duration="1148000" />
       <workItem from="1686922094882" duration="81000" />
-      <workItem from="1687347671596" duration="2106000" />
+      <workItem from="1687347671596" duration="3685000" />
+      <workItem from="1688152701152" duration="5200000" />
+      <workItem from="1697277102769" duration="296000" />
+      <workItem from="1697277425897" duration="66000" />
+      <workItem from="1697386411075" duration="27000" />
+      <workItem from="1698216413067" duration="1326000" />
+      <workItem from="1698395211057" duration="1363000" />
+      <workItem from="1698396590620" duration="939000" />
+      <workItem from="1698500385300" duration="2393000" />
+      <workItem from="1699305046206" duration="44000" />
+      <workItem from="1702899160176" duration="2799000" />
+      <workItem from="1706199241988" duration="604000" />
+      <workItem from="1714210783243" duration="412000" />
+      <workItem from="1715867793094" duration="689000" />
+      <workItem from="1716367113179" duration="240000" />
+      <workItem from="1716367510287" duration="27000" />
+      <workItem from="1721244572876" duration="1138000" />
+      <workItem from="1723986293612" duration="5993000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1682953252452</created>
@@ -149,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685548526399</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="first commit">
+      <created>1687349812004</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1687349812004</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

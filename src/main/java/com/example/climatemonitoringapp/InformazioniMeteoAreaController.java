@@ -18,6 +18,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Questa classe gestisce la visualizzazione delle informazioni meteo di un'area di interesse
+ *
+ */
 public class InformazioniMeteoAreaController {
 
     private String nomeArea;
@@ -67,7 +71,6 @@ public class InformazioniMeteoAreaController {
     AnchorPane anchorPane2 = new AnchorPane();
 
     private int offsetY = 0;
-
 
 
 
@@ -121,6 +124,10 @@ public class InformazioniMeteoAreaController {
 
     }
 
+    /**
+     * Aggiunge un valore alla lista di rilevazioni di un determinato tipo
+     *
+     */
     public void fillStats(){
         //List<List<Integer>> rilevazioniSpecifiche = new ArrayList<>(); // Contiene le rilevazioni di un determinato tipo (es. vento per record[0]))
         Map<String, List<Integer>> rilevazioniSpecifiche = new HashMap<>();

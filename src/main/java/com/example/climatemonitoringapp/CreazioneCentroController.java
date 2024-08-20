@@ -21,6 +21,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Questa classe gestisce la creazione di un nuovo centro di monitoraggio
+ *
+ */
 public class CreazioneCentroController {
     @FXML
     public MenuButton menuButton;
@@ -48,6 +52,11 @@ public class CreazioneCentroController {
     private Scene scene;
     private Parent root;
 
+
+    /**
+     * Con questo metodo andiamo a prendere le aree di interesse e inserirle nella combobox che verrà visualizzata
+     * nella schermata di creazione di un nuovo centro di monitoraggio
+     */
     public void initialize() {
 
         List<List<String>> records = new ArrayList<>();
@@ -87,6 +96,8 @@ public class CreazioneCentroController {
 
     }
 
+
+
     public void rimuoviAreaInteresseSelezionata(String areaInteresseSelezionata,
                                                 List<AreaInteresse> areeInteresseSelezionate){
         for(int i=0; i<areeInteresseSelezionate.size(); i++){
@@ -102,6 +113,10 @@ public class CreazioneCentroController {
         }
     }
 
+    /**
+     * Questo metodo aggiunge un nuovo centro di monitoraggio al file csv tramite l'ausilio del metodo
+     * listCSVConverted() che converte i dati inseriti dall'utente in una stringa
+     */
     public void creazioneCentro(ActionEvent e){
         String csvFilePath = "src/main/resources/centroMonitoraggio.dati.csv";
 
@@ -173,6 +188,8 @@ public class CreazioneCentroController {
     public void setLoggedUser(User user) {
         this.currentUser = user;
     }
+
+
 
     public void tornaIndietro(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
