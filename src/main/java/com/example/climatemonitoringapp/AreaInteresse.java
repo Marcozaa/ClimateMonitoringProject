@@ -1,5 +1,6 @@
 package com.example.climatemonitoringapp;
 
+//prova
 /**
  * Classe che rappresenta un'area di interesse
  * Contiene il nome, le coordinate e lo stato di un'area di interesse
