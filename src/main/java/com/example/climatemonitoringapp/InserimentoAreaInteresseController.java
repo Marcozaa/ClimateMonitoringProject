@@ -12,6 +12,10 @@ import javafx.stage.Stage;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  * Questa classe gestisce l'inserimento di un'area di interesse
@@ -74,6 +78,34 @@ public class InserimentoAreaInteresseController {
 
     }
 
+    public static boolean inserimentoAreaInteresseDB(String nome, String stato, String latitudine, String longitudine) {
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/CimateMonitoringApp", "postgres", "Marco2003");
+
+            if (connection != null) {
+                System.out.println("connection ok");
+
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery("INSERT INTO areainteresse (nomearea, stato, latitudine, longitudine) VALUES ('" + nome + "','" + stato + "','" + latitudine + "','" + longitudine + "')");
+
+
+                return true;
+
+
+            } else {
+                System.out.println("connection failed");
+                return false;
+            }
+            //connection.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+
+        }
+    }
+
     /**
      * Questo metodo inserisce i dati di un'area di interesse nel file AreeInteresse.csv
      * @param e
@@ -97,6 +129,12 @@ public class InserimentoAreaInteresseController {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
+        if(inserimentoAreaInteresseDB(nome, stato, latitudine, longitudine)) {
+            System.out.println("Area di interesse inserita in DB");
+        }
+
+
     }
 
 
