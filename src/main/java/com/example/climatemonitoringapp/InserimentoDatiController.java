@@ -15,6 +15,10 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.security.Timestamp;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -139,12 +143,49 @@ public class InserimentoDatiController {
             }
         }
 
+
+
        
 
 
 
 
 
+    }
+
+    public static boolean inserimentoRilevazioneInDB(int scoreVento, int scoreUmidita, int scorePressione, int scoreTemperatura, int scorePrecipitazioni, int scoreAltitudine, int scoreMassa, String citta, String centro) {
+        try {
+            Class.forName("org.postgresql.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/CimateMonitoringApp", "postgres", "Marco2003");
+
+            if (connection != null) {
+                System.out.println("connection ok");
+
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                String time = sdf.format(new Date());
+
+                String pattern = "dd/MM/yyyy";
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+                String date = simpleDateFormat.format(new Date());
+
+                Statement st = connection.createStatement();
+                ResultSet rs = st.executeQuery("INSERT INTO rilevazione (data_di_rilevazione, ora,vento, umidita, pressione, temperatura, precipitazioni, altitudine_ghiacciai, massa_ghiacciai) VALUES ( '" + date + "','" + time + "','" + scoreVento + "','" + scoreUmidita + "','" + scorePressione + "','" + scoreTemperatura + "','" + scorePrecipitazioni + "','" + scoreAltitudine + "','" + scoreMassa + "')");
+
+
+                return true;
+
+
+            } else {
+                System.out.println("connection failed");
+                return false;
+            }
+            //connection.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return false;
+
+        }
     }
 
     public void initialize() {
@@ -194,6 +235,8 @@ public class InserimentoDatiController {
     }
 
     public void inserisciDati(ActionEvent e){
+
+        /*
         String csvFilePath = "src/main/resources/parametriClimatici.dati.csv";
 
 
@@ -207,7 +250,13 @@ public class InserimentoDatiController {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        */
 
+        try {
+            inserimentoRilevazioneInDB(Integer.parseInt(scoreVento.getText()), Integer.parseInt(scoreUmidita.getText()), Integer.parseInt(scorePressione.getText()), Integer.parseInt(scoreTemperatura.getText()), Integer.parseInt(scorePrecipitazioni.getText()), Integer.parseInt(scoreAltitudine.getText()), Integer.parseInt(scoreMassa.getText()), citySelector.getValue().toString(), nomeCentroLabel.getText());
+        }catch (Exception ex){
+            System.out.println(ex);
+        }
         scoreTemperatura.clear();
         scorePrecipitazioni.clear();
         scoreAltitudine.clear();

@@ -122,8 +122,8 @@ public class LoginOperatoreController {
                 ResultSet rs = st.executeQuery("SELECT * FROM operatore");
                 while (rs.next()) {
                     System.out.print("Column 1 returned ");
-                    String username = rs.getString(1);
-                    String password = rs.getString(2);
+                    String username = rs.getString(2);
+                    String password = rs.getString(7);
 
                     if(username.equals(TriedUsername) && password.equals(TriedPassword)){
                         return true;
