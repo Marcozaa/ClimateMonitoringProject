@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="inserimento di area interesse in db">
+    <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="inserimento di rilevazione in db">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoDatiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoDatiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/LoginOperatoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/LoginOperatoreController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +116,7 @@
       <workItem from="1716367113179" duration="240000" />
       <workItem from="1716367510287" duration="27000" />
       <workItem from="1721244572876" duration="1138000" />
-      <workItem from="1723986293612" duration="13738000" />
+      <workItem from="1723986293612" duration="18503000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1682953252452</created>
@@ -189,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1724235937868</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="inserimento di rilevazione in db">
+      <created>1724339907728</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1724339907728</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +227,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
     <MESSAGE value="inserimento di area interesse in db" />
-    <option name="LAST_COMMIT_MESSAGE" value="inserimento di area interesse in db" />
+    <MESSAGE value="inserimento di rilevazione in db" />
+    <option name="LAST_COMMIT_MESSAGE" value="inserimento di rilevazione in db" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
