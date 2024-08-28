@@ -12,9 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -37,6 +36,10 @@ public class LoginOperatoreController {
     private Scene scene;
     private Parent root;
     private User currentUser;
+
+    private Socket socket;
+    ObjectInputStream in;
+    ObjectOutputStream out;
 
 
     /**
@@ -143,6 +146,52 @@ public class LoginOperatoreController {
         return false;
     }
 
+    public void checkCredentials(ActionEvent e) throws IOException, ClassNotFoundException {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+
+        out.writeObject("validateUser");
+        out.writeObject(username);
+        out.writeObject(password);
+
+        // Receiving server response
+        boolean isValid = (boolean) in.readObject();
+        if(isValid){
+        System.out.println("logged");
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
+        root = loader.load();
+
+        HomepageController controller = loader.getController();
+        controller.setLoggedUser(new User(username, password));
+        controller.userCheck();
+
+        stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }else{
+        System.out.println("not logged");
+        Label label = new Label("Credenziali errate");
+        label.setTextFill(javafx.scene.paint.Color.RED);
+        pannelloAncora.getChildren().add(label);
+        label.setMaxWidth(Double.MAX_VALUE);
+        AnchorPane.setLeftAnchor(label, 0.0);
+        AnchorPane.setRightAnchor(label, 0.0);
+        label.setAlignment(Pos.CENTER);
+
+    }
+
+    }
+
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        System.out.println("socket connesso in loginop= " + socket);
+        this.in=in;
+        this.out=out;
+        //out = new ObjectOutputStream(socket.getOutputStream());
+        //in = new ObjectInputStream(socket.getInputStream());
+    }
     public void setLoggedUser(User user){
         this.currentUser = user;
     }

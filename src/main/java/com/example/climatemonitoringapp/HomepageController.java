@@ -12,11 +12,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import animatefx.animation.Bounce;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 /**
  * Questa classe gestisce la homepage dell'applicazione
@@ -48,6 +52,12 @@ public class HomepageController {
     private Scene scene;
     private Parent root;
 
+    private Socket socket;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
+    Font font = Font.loadFont(getClass().getResourceAsStream("/fonts/NewAmsterdam-Regular.ttf"), 12);
+
+
     public void userCheck() {
         if(currentUser==null){
             creazioneCentroCTA.setVisible(false);
@@ -61,6 +71,9 @@ public class HomepageController {
     }
     public void initialize(){
         userCheck();
+
+        userName.setFont(font);
+
 
 
     }
@@ -87,10 +100,12 @@ public class HomepageController {
 
     public void loginOperatoriCTA(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginOperatore.fxml"));
+
         root = loader.load();
 
         LoginOperatoreController loController = loader.getController();
         loController.setLoggedUser(currentUser);
+        loController.setConnectionSocket(socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -131,6 +146,12 @@ public class HomepageController {
             scene = new Scene(root);
             stage.setScene(scene);
         }
+    }
+
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        this.in = in;
+        this.out = out;
     }
     public void inserimentoAreaCTA(ActionEvent e) throws IOException {
         if(currentUser!= null) {

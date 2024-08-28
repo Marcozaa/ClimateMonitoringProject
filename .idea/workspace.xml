@@ -10,8 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="inserimento di rilevazione in db">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/ConnessioneDB.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/NewAmsterdam-Regular.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoDatiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoDatiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/LoginOperatoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/LoginOperatoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/LoginOperatore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/climatemonitoringapp/LoginOperatore.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -48,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/marco/Desktop/postgresql-42.7.3 (1).jar",
+    "last_opened_file_path": "C:/Users/marco/Documents/universita/labb/javfxlib/lib",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -62,6 +67,7 @@
       <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\resources\com\example\climatemonitoringapp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\resources\fonts" />
       <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\resources\com\example\climatemonitoringapp" />
       <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\java\com\example\climatemonitoringapp" />
       <recent name="C:\Users\marco\IdeaProjects\ClimateMonitoringApp\src\main\resources" />
@@ -117,6 +123,8 @@
       <workItem from="1716367510287" duration="27000" />
       <workItem from="1721244572876" duration="1138000" />
       <workItem from="1723986293612" duration="18503000" />
+      <workItem from="1724573234041" duration="671000" />
+      <workItem from="1724702822418" duration="11147000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1682953252452</created>
