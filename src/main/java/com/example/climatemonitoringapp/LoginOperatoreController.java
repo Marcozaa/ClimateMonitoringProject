@@ -63,6 +63,7 @@ public class LoginOperatoreController {
             HomepageController controller = loader.getController();
             controller.setLoggedUser(new User(username, password));
             controller.userCheck();
+            
 
             stage = (Stage)((Node)e.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -91,6 +92,10 @@ public class LoginOperatoreController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("RegistrazioneOperatore.fxml"));
         root = loader.load();
 
+		RegistrazioneOperatoreController controller = loader.getController();
+		
+		controller.setConnectionSocket(socket, out, in);
+
 
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -107,6 +112,7 @@ public class LoginOperatoreController {
             controller.setLoggedUser(currentUser);
         }
         controller.userCheck();
+        controller.setConnectionSocket(socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -166,6 +172,7 @@ public class LoginOperatoreController {
         HomepageController controller = loader.getController();
         controller.setLoggedUser(new User(username, password));
         controller.userCheck();
+        controller.setConnectionSocket(socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);

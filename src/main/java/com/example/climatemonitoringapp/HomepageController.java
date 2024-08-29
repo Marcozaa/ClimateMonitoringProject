@@ -1,6 +1,6 @@
 package com.example.climatemonitoringapp;
 
-import animatefx.animation.FadeIn;
+//import animatefx.animation.FadeIn;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import animatefx.animation.Bounce;
+//import animatefx.animation.Bounce;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -190,7 +190,7 @@ public class HomepageController {
 
     public void testPane(){
         System.out.println("reyu");
-        new FadeIn(pane1).play();
+        //new FadeIn(pane1).play();
     }
 
 

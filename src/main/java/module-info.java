@@ -1,7 +1,7 @@
 module com.example.climatemonitoringapp {
     requires javafx.controls;
     requires javafx.fxml;
-    requires AnimateFX;
+    //requires AnimateFX;
     requires java.sql;
 
 

@@ -13,6 +13,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -28,13 +31,28 @@ public class RegistrazioneOperatoreController {
     @FXML
     private TextField usernameField;
     @FXML
+    private TextField emailField;
+    @FXML
+    private TextField CognomeField;
+    @FXML
+    private TextField nomeField;
+    @FXML
     private TextField passwordField;
     @FXML
+    private TextField codFiscField;
+    
+    @FXML
     private AnchorPane pannelloAncora;
+    
+    
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+    
+    private Socket socket;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
 
     /**
      * Questo metodo registra un nuovo operatore, ossia ne inserisce le credenziali nel file credenzialiOperatori.txt
@@ -94,6 +112,31 @@ public class RegistrazioneOperatoreController {
         }
 
     }
+    
+    
+    
+    public void insertCredentials(ActionEvent e){
+        String nome = nomeField.getText();
+        String cognome = CognomeField.getText();
+        String cf = codFiscField.getText();
+        String email = emailField.getText();
+        String password = passwordField.getText();
+       
+        try {
+			out.writeObject("registerOperator");
+			out.writeObject(nome);
+	        out.writeObject(cognome);
+	        out.writeObject(cf);
+	        out.writeObject(email);
+	        out.writeObject(password);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        
+        
+        
+    }
 
     /**
      * Questo metodo collegato al bottone torna alla schermata di login
@@ -103,9 +146,18 @@ public class RegistrazioneOperatoreController {
     public void tornaIndietroLogin(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginOperatore.fxml"));
         root = loader.load();
+        
+        LoginOperatoreController controller = loader.getController();
+        controller.setConnectionSocket(socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+    
+    public void setConnectionSocket(Socket socket, ObjectOutputStream out, ObjectInputStream in){
+        this.socket= socket;
+        this.in = in;
+		this.out=out;        
     }
 }
