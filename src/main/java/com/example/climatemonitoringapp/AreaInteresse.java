@@ -1,11 +1,16 @@
 package com.example.climatemonitoringapp;
 
+import java.io.Serializable;
+
+
+
 //prova
 /**
  * Classe che rappresenta un'area di interesse
  * Contiene il nome, le coordinate e lo stato di un'area di interesse
  */
-public class AreaInteresse {
+public class AreaInteresse implements Serializable {
+	private static final long serialVersionUID = 1L;
     private String nome;
     private String coordX;
     private String coordY;

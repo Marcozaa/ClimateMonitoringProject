@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,6 +45,7 @@ public class CreazioneCentroController {
     private TextField comuneField;
 
     private List<AreaInteresse> areeInteresseSelezionate = new ArrayList<>();
+    private ArrayList<String> areeInteresse = new ArrayList<>();
 
     private User currentUser;
 
@@ -51,6 +53,10 @@ public class CreazioneCentroController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    
+    Socket socket;
+    ObjectOutputStream out;
+    ObjectInputStream in;
 
 
     /**
@@ -58,6 +64,8 @@ public class CreazioneCentroController {
      * nella schermata di creazione di un nuovo centro di monitoraggio
      */
     public void initialize() {
+        
+        
 
         List<List<String>> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/AreeInteresse.csv"))){
@@ -81,10 +89,12 @@ public class CreazioneCentroController {
                     if (cb.isSelected()) {
                         System.out.println(cb.getText()+" Added");
                         areeInteresseSelezionate.add(new AreaInteresse(cb.getText()));
+                        areeInteresse.add(cb.getText());
                         stampaAreeInteresseSelezionate(areeInteresseSelezionate);
                     } else {
                         System.out.println(cb.getText()+" Removed");
                         rimuoviAreaInteresseSelezionata(cb.getText(), areeInteresseSelezionate);
+                        areeInteresse.remove(cb.getText());
                         stampaAreeInteresseSelezionate(areeInteresseSelezionate);
                     }
                 }
@@ -92,8 +102,30 @@ public class CreazioneCentroController {
             menuButton.getItems().add(item);
         }
         System.out.println(menuButton.getItems());
+        
+        
+       
 
 
+    }
+    
+    public boolean checkExistingMonitoringCenter(){
+        System.out.println("Socket: "+ socket);
+        System.out.println("Out: "+ out);
+        System.out.println("In: "+ in);
+
+        try {
+        	out.writeObject("checkExistingMonitoringCenter");
+			out.writeObject(currentUser.getUsername());
+			return (boolean) in.readObject();
+			
+
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
     }
 
 
@@ -118,7 +150,31 @@ public class CreazioneCentroController {
      * listCSVConverted() che converte i dati inseriti dall'utente in una stringa
      */
     public void creazioneCentro(ActionEvent e){
-        String csvFilePath = "src/main/resources/centroMonitoraggio.dati.csv";
+        System.out.println("Creazione centro di monitoraggio");
+        try {
+        	if(!checkExistingMonitoringCenter()){
+                System.out.println("non ha centri di monitoraggio, inserisco...");
+                for (String area : areeInteresse){
+                                System.out.print(area);
+                            }
+                out.writeObject("insertMonitoringCenterData");
+                out.writeObject(nomeField.getText());
+                out.writeObject(viaField.getText());
+    			out.writeObject(Integer.parseInt(capField.getText()));
+                out.writeObject(Integer.parseInt(numCivicoField.getText()));
+    			out.writeObject(comuneField.getText());
+    			out.writeObject(provinciaField.getText());
+    			out.writeObject(areeInteresse);
+            }else{
+               System.out.println("ha centri di monitoraggio");
+
+            }
+		} catch (Exception e2) {
+			System.out.println(e2);
+			// TODO: handle exception
+		}
+        
+        /*String csvFilePath = "src/main/resources/centroMonitoraggio.dati.csv";
 
 
 
@@ -203,6 +259,14 @@ public class CreazioneCentroController {
         scene = new Scene(root);
         stage.setScene(scene);
     }
+    
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        this.in = in;
+        this.out = out;
+    }
+    
+   
 
 
 }

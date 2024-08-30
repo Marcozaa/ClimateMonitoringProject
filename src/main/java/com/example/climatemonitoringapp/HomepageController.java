@@ -124,6 +124,7 @@ public class HomepageController {
 
             CreazioneCentroController ccController = loader.getController();
             ccController.setLoggedUser(currentUser);
+            ccController.setConnectionSocket(socket, in, out);
 
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             scene = new Scene(root);
