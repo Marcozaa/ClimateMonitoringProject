@@ -71,6 +71,7 @@ public class RegistrazioneOperatoreController {
             AnchorPane.setLeftAnchor(label, 0.0);
             AnchorPane.setRightAnchor(label, 0.0);
             label.setAlignment(Pos.CENTER);
+
         }else{
             System.out.println("Errore nella registrazione");
             Label label = new Label("Errore nella registrazione");

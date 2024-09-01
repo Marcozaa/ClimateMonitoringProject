@@ -154,6 +154,8 @@ public class CreazioneCentroController {
         try {
         	if(!checkExistingMonitoringCenter()){
                 System.out.println("non ha centri di monitoraggio, inserisco...");
+                creaCentroButton.setDisable(false);
+
                 for (String area : areeInteresse){
                                 System.out.print(area);
                             }
@@ -165,8 +167,14 @@ public class CreazioneCentroController {
     			out.writeObject(comuneField.getText());
     			out.writeObject(provinciaField.getText());
     			out.writeObject(areeInteresse);
+
+                out.writeObject("insertMonitoringCenterDataUser");
+                out.writeObject(nomeField.getText());
+                out.writeObject(currentUser.getUsername());
+                
             }else{
                System.out.println("ha centri di monitoraggio");
+               creaCentroButton.setDisable(true);
 
             }
 		} catch (Exception e2) {
