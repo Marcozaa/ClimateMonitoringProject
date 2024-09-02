@@ -13,14 +13,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 
 /**
@@ -51,6 +51,10 @@ public class RisultatiCittaController {
     final int NUM_AREAS_BY_COORDINATES = 3;
 
     private List<AreaInteresse> areeInteressePossibili = new ArrayList<>();
+
+    private Socket socket;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
 
     @FXML
     protected void initialize() throws IOException {
@@ -83,9 +87,18 @@ public class RisultatiCittaController {
 
     }
 
-    public void setCittaCercata(String cittaCercata) throws IOException {
+    public void setCittaCercata(String cittaCercata, Socket socket, ObjectInputStream in,ObjectOutputStream out ) throws IOException {
         this.cittaCercata = cittaCercata;
+        this.socket = socket;
+        this.out = out;
+        this.in = in;
         filterFile(cittaCercata);
+    }
+
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        this.in = in;
+        this.out = out;
     }
 
 
@@ -162,7 +175,8 @@ public class RisultatiCittaController {
      * @throws IOException
      */
     private void filterFile(String cittaCercata) throws IOException {
-        List<List<String>> records = new ArrayList<>();
+
+        /*List<List<String>> records = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/AreeInteresse.csv"))){
             String line;
             while ((line = br.readLine()) != null) {
@@ -202,7 +216,39 @@ public class RisultatiCittaController {
             //button.setLayoutX(30 * i); //set x coordinate
             vbox.getChildren().add(pane);
 
+        }*/
+
+        while(out == null || in == null) {
+            System.out.println("Waiting for connection");
         }
+        getAreasFromServer();
+
+    }
+
+    public void getAreasFromServer(){
+        try {
+            out.writeObject("getAreeInteresse");
+            out.writeObject(cittaCercata);
+            List<AreaInteresse> aree = (List<AreaInteresse>) in.readObject();
+            for (AreaInteresse a : aree) {
+                System.out.println(a.getNome());
+            }
+
+            for (int j = 0; j < aree.size(); j++) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AreaResult.fxml"));
+                AnchorPane pane = loader.load();
+                AreaResultController arc = loader.getController();
+                arc.setAreaName(aree.get(j).getNome());
+                arc.setAreaState(aree.get(j).getStato());
+                arc.setAreaCoords(aree.get(j).getCoordX() + "N, " + aree.get(j).getCoordY() + "E");
+                //Button button = new Button("Button " + i + " " + j); //create new Button
+                //button.setLayoutX(30 * i); //set x coordinate
+                vbox.getChildren().add(pane);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 
@@ -214,6 +260,9 @@ public class RisultatiCittaController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         root = loader.load();
 
+        HomepageController controller = loader.getController();
+        controller.setLoggedUser(currentUser);
+        controller.setConnectionSocket(socket, in, out);
 
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();

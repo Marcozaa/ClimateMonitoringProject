@@ -9,9 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -36,6 +35,10 @@ public class InserimentoAreaInteresseController {
 
     private User currentUser;
 
+    private Socket socket;
+    ObjectInputStream in;
+    ObjectOutputStream out;
+
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
@@ -47,6 +50,7 @@ public class InserimentoAreaInteresseController {
         HomepageController hpController = loader.getController();
         hpController.setLoggedUser(currentUser);
         hpController.userCheck();
+        hpController.setConnectionSocket(socket, in, out);
 
 
 
@@ -78,26 +82,22 @@ public class InserimentoAreaInteresseController {
 
     }
 
-    public static boolean inserimentoAreaInteresseDB(String nome, String stato, String latitudine, String longitudine) {
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        this.in = in;
+        this.out = out;
+    }
+
+    public boolean inserimentoAreaInteresse(String nome, String stato, double latitudine, double longitudine) {
         try {
-            Class.forName("org.postgresql.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/CimateMonitoringApp", "postgres", "Marco2003");
+            out.writeObject("insertAreaOfInterest");
+            out.writeObject(nome);
+            out.writeObject(stato);
+            out.writeObject(latitudine);
+            out.writeObject(longitudine);
+            //connection.close()
 
-            if (connection != null) {
-                System.out.println("connection ok");
-
-                Statement st = connection.createStatement();
-                ResultSet rs = st.executeQuery("INSERT INTO areainteresse (nomearea, stato, latitudine, longitudine) VALUES ('" + nome + "','" + stato + "','" + latitudine + "','" + longitudine + "')");
-
-
-                return true;
-
-
-            } else {
-                System.out.println("connection failed");
-                return false;
-            }
-            //connection.close();
+            return true;
 
         } catch (Exception e) {
             System.out.println(e);
@@ -113,8 +113,8 @@ public class InserimentoAreaInteresseController {
     public void inserisciDati(ActionEvent e){
         String nome = nomeArea.getText();
         String stato = statoArea.getText();
-        String latitudine = latitudineArea.getText();
-        String longitudine = longitudineArea.getText();
+        double latitudine = Double.parseDouble(latitudineArea.getText());
+        double longitudine = Double.parseDouble(longitudineArea.getText());
 
         String csvFilePath = "src/main/resources/AreeInteresse.csv";
 
@@ -122,7 +122,7 @@ public class InserimentoAreaInteresseController {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, true))) {
 
-            writer.write(convertStringsToCSV(nome, stato, latitudine, longitudine));
+            //writer.write(convertStringsToCSV(nome, stato, latitudine, longitudine));
             writer.newLine();
 
             System.out.println("CSV file written successfully.");
@@ -130,7 +130,7 @@ public class InserimentoAreaInteresseController {
             ex.printStackTrace();
         }
 
-        if(inserimentoAreaInteresseDB(nome, stato, latitudine, longitudine)) {
+        if(inserimentoAreaInteresse(nome, stato, latitudine, longitudine)) {
             System.out.println("Area di interesse inserita in DB");
         }
 

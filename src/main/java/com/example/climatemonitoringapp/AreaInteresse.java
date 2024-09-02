@@ -5,28 +5,36 @@ import java.io.Serializable;
 
 
 //prova
+
 /**
  * Classe che rappresenta un'area di interesse
  * Contiene il nome, le coordinate e lo stato di un'area di interesse
  */
 public class AreaInteresse implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     private String nome;
-    private String coordX;
-    private String coordY;
+    private Double coordX;
+    private Double coordY;
     private String stato;
 
 
-    public AreaInteresse(String nome, String stato, String coordX, String coordY) {
+    /*public AreaInteresse(String nome, String stato, String coordX, String coordY) {
         this.nome = nome;
         this.coordX = coordX;
         this.coordY = coordY;
         this.stato = stato;
-    }
+    }*/
 
     public AreaInteresse(String nome) {
         this.nome = nome;
 
+    }
+
+    public AreaInteresse(String nome, String stato, double latitudine, double longitudine) {
+        this.nome = nome;
+        this.coordX = latitudine;
+        this.coordY = coordY;
+        this.stato = stato;
     }
 
     /**
@@ -41,7 +49,7 @@ public class AreaInteresse implements Serializable {
      * Metodo che restituisce le coordinate dell'area di interesse
      * @return
      */
-    public String getCoordX() {
+    public Double getCoordX() {
         return coordX;
     }
 
@@ -49,7 +57,7 @@ public class AreaInteresse implements Serializable {
      * Metodo che restituisce le coordinate dell'area di interesse
      * @return
      */
-    public String getCoordY() {
+    public Double getCoordY() {
         return coordY;
     }
 
@@ -58,7 +66,7 @@ public class AreaInteresse implements Serializable {
      * @return
      */
     public String getStato() {
-    	return stato;
+        return stato;
     }
 
     @Override
@@ -66,3 +74,4 @@ public class AreaInteresse implements Serializable {
         return nome;
     }
 }
+

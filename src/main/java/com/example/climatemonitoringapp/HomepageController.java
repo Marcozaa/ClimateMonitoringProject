@@ -77,6 +77,9 @@ public class HomepageController {
 
 
     }
+
+
+
     public void cercaCitta(ActionEvent e) throws IOException {
         String city = cittaCercata.getText();
 
@@ -86,7 +89,7 @@ public class HomepageController {
         RisultatiCittaController rcController = loader.getController();
 
         rcController.displayName(city);
-        rcController.setCittaCercata(city);
+        rcController.setCittaCercata(city,socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -161,6 +164,7 @@ public class HomepageController {
 
             InserimentoAreaInteresseController iaController = loader.getController();
             iaController.setCurrentUser(currentUser);
+            iaController.setConnectionSocket(socket, in, out);
 
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             scene = new Scene(root);

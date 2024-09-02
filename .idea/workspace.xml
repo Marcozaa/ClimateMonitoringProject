@@ -9,10 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="aggiunta loginOperatore client server">
+    <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="bottone disabilitato per utenti con centro e inizio query per inserimento centro in operatore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/AreaInteresse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/AreaInteresse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/CreazioneCentroController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/CreazioneCentroController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RegistrazioneOperatoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RegistrazioneOperatoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoAreaInteresseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/InserimentoAreaInteresseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RisultatiCittaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RisultatiCittaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AreeInteresse.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AreeInteresse.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +127,9 @@
       <workItem from="1724702822418" duration="11147000" />
       <workItem from="1725033188024" duration="61000" />
       <workItem from="1725036787325" duration="59000" />
-      <workItem from="1725196867338" duration="2694000" />
+      <workItem from="1725196867338" duration="5242000" />
+      <workItem from="1725272695086" duration="1214000" />
+      <workItem from="1725275782537" duration="4642000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1682953252452</created>
@@ -202,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1724339907728</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="bottone disabilitato per utenti con centro e inizio query per inserimento centro in operatore">
+      <created>1725199879362</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1725199879362</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +248,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="inserimento di area interesse in db" />
     <MESSAGE value="inserimento di rilevazione in db" />
-    <option name="LAST_COMMIT_MESSAGE" value="inserimento di rilevazione in db" />
+    <MESSAGE value="bottone disabilitato per utenti con centro e inizio query per inserimento centro in operatore" />
+    <option name="LAST_COMMIT_MESSAGE" value="bottone disabilitato per utenti con centro e inizio query per inserimento centro in operatore" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

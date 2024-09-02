@@ -262,6 +262,7 @@ public class CreazioneCentroController {
         HomepageController controller = loader.getController();
         controller.setLoggedUser(currentUser);
         controller.userCheck();
+        controller.setConnectionSocket(socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
