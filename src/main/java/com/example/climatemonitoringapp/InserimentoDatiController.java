@@ -1,5 +1,6 @@
 package com.example.climatemonitoringapp;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.net.Socket;
 import java.security.Timestamp;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -22,6 +24,11 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+
+import climatemonitoringserver.AreaInteresse;
+
+
+import climatemonitoringserver.CentroMonitoraggio;
 
 /**
  * Questa classe gestisce l'inserimento dei dati meteo di un'area di interesse
@@ -64,6 +71,12 @@ public class InserimentoDatiController {
     private User currentUser;
     private String nomeCentro;
 
+    private CentroMonitoraggio centroMonitoraggio;
+
+    private Socket socket;
+    private ObjectOutputStream out;
+    private ObjectInputStream in;
+
 
     public void tornaIndietro(ActionEvent e) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
@@ -72,22 +85,150 @@ public class InserimentoDatiController {
         HomepageController hpController = loader.getController();
         hpController.setLoggedUser(currentUser);
         hpController.userCheck();
+        hpController.setConnectionSocket(socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
     }
 
+    private boolean checkMonitoringCenter(){
+          try {
+                	out.writeObject("checkExistingMonitoringCenter");
+        			out.writeObject(currentUser.getUsername());
+        			Label label = new Label("");
+        			System.out.println("label + " + label);
+        			if(!(boolean)in.readObject()){
+        				label.setText("Non hai ancora un centro di monitoraggio");
+        				System.out.println("label + " + label);
+                                          label.setVisible(true);
+                                          System.out.println("label è visibile? + " + label.isVisible());
+                                            noDataPanel.getChildren().add(label);
+                                            scoreTemperatura.setVisible(false);
+                                            scorePrecipitazioni.setVisible(false);
+                                            scoreAltitudine.setVisible(false);
+                                            scorePressione.setVisible(false);
+                                            scoreUmidita.setVisible(false);
+                                            scoreMassa.setVisible(false);
+                                            scoreVento.setVisible(false);
+                                            buttonInserimentoDati.setVisible(false);
+                                            nomeCentroLabel.setVisible(false);
+                                            citySelector.setVisible(false);
+                                            labelVento.setVisible(false);
+                                            labelMassa.setVisible(false);
+                                            labelUmidita.setVisible(false);
+                                            labelPressione.setVisible(false);
+                                            labelAltitudine.setVisible(false);
+                                            labelPrecipitazioni.setVisible(false);
+                                            labelTemperatura.setVisible(false);
+
+        			}else{
+        				label.setText("Centro di monitoraggio esistente");
+        				System.out.println("label + " + label);
+                        System.out.println("Centro di monitoraggio esistente");
+                        out.writeObject("getCentroFromOperatore");
+                        out.writeObject(currentUser.getUsername());
+                        centroMonitoraggio = (CentroMonitoraggio)in.readObject();
+                        setNomeCentroLabel(centroMonitoraggio.getNome());
+                        scoreTemperatura.setVisible(true);
+                                        label.setVisible(false);
+                                        System.out.println("label è visibile? + " + label.isVisible());
+                                                    scorePrecipitazioni.setVisible(true);
+                                                                    scoreAltitudine.setVisible(true);
+                                                                    scorePressione.setVisible(true);
+                                                                    scoreUmidita.setVisible(true);
+                                                                    scoreMassa.setVisible(true);
+                                                                    scoreVento.setVisible(true);
+                                                                    buttonInserimentoDati.setVisible(true);
+                                                                    nomeCentroLabel.setVisible(true);
+                                                                    citySelector.setVisible(true);
+                                                                    labelVento.setVisible(true);
+                                                                    labelMassa.setVisible(true);
+                                                                    labelUmidita.setVisible(true);
+                                                                    labelPressione.setVisible(true);
+                                                                    labelAltitudine.setVisible(true);
+                                                                    labelPrecipitazioni.setVisible(true);
+                                                                    labelTemperatura.setVisible(true);
+        			return true;
+        			}
+        		} catch (Exception e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+        		return false;
+    }
+
     public void getCittaControllate(){
 
     }
 
-    /**
-     * Metodo che viene chiamato quando si clicca sul bottone "Inserisci Dati"
-     * permette di inserire le citta controllate dall'utente nella combobox
-     * @throws IOException
-     */
-    public void fillOptions() throws IOException {
+    public void setNomeCentroLabel(String nomeCentro){
+        this.nomeCentro = nomeCentro;
+        nomeCentroLabel.setText(nomeCentro);
+    }
+    
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        this.in = in;
+        this.out = out;
+    }
+
+
+
+
+
+
+    public void initialize() {
+        if(currentUser!= null) {
+
+        }
+
+        System.out.println("InserimentoDatiController initialized");
+        
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                while(socket == null){
+                    try {
+                        System.out.println("Threads sleep for 100 milsec...");
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                
+                System.out.println("checkMonitoringCenter thread");
+                if(checkMonitoringCenter()){
+                    try {
+                        out.writeObject("getCittaControllate");
+                        out.writeObject(centroMonitoraggio.getId());
+                        List<AreaInteresse> cittaControllate = (List<AreaInteresse>)in.readObject();
+                        centroMonitoraggio.setAreaInteresse(cittaControllate);
+                        for(AreaInteresse citta : cittaControllate){
+                            citySelector.getItems().add(citta.getNome());
+                        }
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }else{
+                }
+
+
+            }
+        }
+
+        );
+
+
+
+
+
+    }
+
+
+    /*
+public void fillOptions() throws IOException {
         List<List<String>> CentroUser = new ArrayList<>();
         List<String> CittaControllateUser = new ArrayList<>();
 
@@ -142,164 +283,59 @@ public class InserimentoDatiController {
                 citySelector.getItems().add(CentroUser.get(0).get(i));
             }
         }
-
-
-
-       
-
-
-
-
-
     }
-
-
-
-    public static boolean inserimentoRilevazioneInDB(
-            int scoreVento, int scoreUmidita, int scorePressione, int scoreTemperatura,
-            int scorePrecipitazioni, int scoreAltitudine, int scoreMassa,
-            String citta, String centro) {
-
-        Connection connection = null;
-        Statement stmt = null;
-
-        try {
-            // Carica il driver del database
-            Class.forName("org.postgresql.Driver");
-
-            // Connessione al database
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/CimateMonitoringApp", "postgres", "Marco2003");
-
-            if (connection != null) {
-                System.out.println("Connessione avvenuta con successo");
-
-                // Ottieni l'ora corrente
-                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-                String time = sdf.format(new Date());
-
-                // Ottieni la data corrente in formato YYYY-MM-DD
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String date = dateFormat.format(new Date());
-
-                // Costruzione della query SQL
-                String query = "INSERT INTO rilevazione " +
-                        "(centro_di_monitoraggio, area_di_interesse, data_di_rilevazione, ora, vento, umidita, pressione, temperatura, precipitazioni, altitudine_ghiacciai, massa_ghiacciai) " +
-                        "VALUES (" +
-                        "(SELECT codice FROM centrimonitoraggio WHERE nome = '" + centro + "'), " +  // Valore per centro_di_monitoraggio
-                        "(SELECT codice FROM areeinteresse WHERE nome = '" + citta + "'), " +       // Valore per area_di_interesse
-                        "'" + date + "', " +                                           // Data di rilevazione
-                        "'" + time + "', " +                                           // Ora di rilevazione
-                        scoreVento + ", " +                                           // Punteggio del vento
-                        scoreUmidita + ", " +                                         // Punteggio dell'umidità
-                        scorePressione + ", " +                                       // Punteggio della pressione
-                        scoreTemperatura + ", " +                                     // Punteggio della temperatura
-                        scorePrecipitazioni + ", " +                                   // Punteggio delle precipitazioni
-                        scoreAltitudine + ", " +                                      // Altitudine dei ghiacciai
-                        scoreMassa + ")";                                             // Massa dei ghiacciai
-
-                // Creazione e esecuzione della query
-                stmt = connection.createStatement();
-                int rowsAffected = stmt.executeUpdate(query);
-
-                // Controlla se l'inserimento è avvenuto con successo
-                if (rowsAffected > 0) {
-                    System.out.println("Inserimento riuscito.");
-                    return true;
-                } else {
-                    System.out.println("Inserimento fallito.");
-                    return false;
-                }
-
-            } else {
-                System.out.println("Connessione fallita");
-                return false;
-            }
-
-        } catch (Exception e) {
-            System.out.println("Errore: " + e.getMessage());
-            return false;
-
-        } finally {
-            // Chiusura delle risorse
-            try {
-                if (stmt != null) stmt.close();
-                if (connection != null) connection.close();
-            } catch (Exception e) {
-                System.out.println("Errore nella chiusura delle risorse: " + e.getMessage());
-            }
-        }
-    }
-
-
-    public void initialize() {
-        if(currentUser!= null) {
-
-        }
-
-
-
-    }
-
-
+*/
 
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
 
-    public String convertDataToCSV(){
-        StringBuilder csvData = new StringBuilder();
-        csvData.append(nomeCentroLabel.getText());
-        csvData.append(",");
-        csvData.append(citySelector.getValue());
-        csvData.append(",");
-        csvData.append(scoreVento.getText());
-        csvData.append(",");
-        csvData.append(scoreUmidita.getText());
-        csvData.append(",");
-        csvData.append(scorePressione.getText());
-        csvData.append(",");
-        csvData.append(scoreTemperatura.getText());
-        csvData.append(",");
-        csvData.append(scorePrecipitazioni.getText());
-        csvData.append(",");
-        csvData.append(scoreAltitudine.getText());
-        csvData.append(",");
-        csvData.append(scoreMassa.getText());
-        csvData.append(",");
-        csvData.append(java.time.LocalDate.now());
-        csvData.append(",");
-        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-        String time = sdf.format(new Date());
-        csvData.append(time);
-        //csvData.append("\n");
 
-        String csvContent = csvData.toString();
-        return csvContent;
-    }
 
     public void inserisciDati(ActionEvent e){
 
-        /*
-        String csvFilePath = "src/main/resources/parametriClimatici.dati.csv";
-
-
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, true))) {
-
-            writer.write(convertDataToCSV());
-            writer.newLine();
-
-            System.out.println("CSV file written successfully.");
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        if(citySelector.getSelectionModel().getSelectedItem() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText("Errore nell'inserimento dei dati");
+            alert.setContentText("Seleziona una città dalla lista");
+            alert.showAndWait();
+            return;
         }
-        */
+
+        if(scoreTemperatura.getText().isEmpty() || scorePrecipitazioni.getText().isEmpty() || scoreAltitudine.getText().isEmpty() || scorePressione.getText().isEmpty() || scoreUmidita.getText().isEmpty() || scoreMassa.getText().isEmpty() || scoreVento.getText().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Errore");
+            alert.setHeaderText("Errore nell'inserimento dei dati");
+            alert.setContentText("Compila tutti i campi");
+            alert.showAndWait();
+            return;
+        }
 
         try {
-            inserimentoRilevazioneInDB(Integer.parseInt(scoreVento.getText()), Integer.parseInt(scoreUmidita.getText()), Integer.parseInt(scorePressione.getText()), Integer.parseInt(scoreTemperatura.getText()), Integer.parseInt(scorePrecipitazioni.getText()), Integer.parseInt(scoreAltitudine.getText()), Integer.parseInt(scoreMassa.getText()), citySelector.getValue().toString(), nomeCentroLabel.getText());
-        }catch (Exception ex){
-            System.out.println(ex);
+            out.writeObject("insertClimateParameters");
+            out.writeObject(centroMonitoraggio.getId());
+            out.writeObject(getIdFromSelectedCity());
+            out.writeObject(Integer.parseInt(scoreTemperatura.getText()));
+            out.writeObject(Integer.parseInt(scoreUmidita.getText()));
+            out.writeObject(Integer.parseInt(scorePressione.getText()));
+            out.writeObject(Integer.parseInt(scorePrecipitazioni.getText()));
+            out.writeObject(Integer.parseInt(scoreAltitudine.getText()));
+
+            out.writeObject(Integer.parseInt(scoreMassa.getText()));
+            out.writeObject(Integer.parseInt(scoreVento.getText()));
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Successo");
+            alert.setHeaderText("Dati inseriti correttamente");
+            alert.showAndWait();
+            clearFields();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+
+    }
+
+    private void clearFields(){
         scoreTemperatura.clear();
         scorePrecipitazioni.clear();
         scoreAltitudine.clear();
@@ -308,5 +344,20 @@ public class InserimentoDatiController {
         scoreUmidita.clear();
         scoreVento.clear();
         citySelector.getSelectionModel().clearSelection();
+    }
+
+    private int getIdFromSelectedCity() {
+
+        String nomeCitta = citySelector.getValue().toString();
+        
+        for(AreaInteresse citta : centroMonitoraggio.getAreeInteresse()){
+            if(citta.getNome().equals(nomeCitta)){
+                System.out.println("ID della citta sellezionata: " + citta.getId());
+                return citta.getId();
+            }
+        }
+
+        return -1;
+        
     }
 }

@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+import climatemonitoringserver.*;
 
 /**
  * Questa classe gestisce la visualizzazione dei risultati di ricerca di una città
@@ -247,13 +247,15 @@ public class RisultatiCittaController {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println("risultaticittacontroller");
         }
 
 
     }
 
-    private void setCurrentUser(User currentUser){
+    public void setCurrentUser(User currentUser){
         this.currentUser = currentUser;
+        System.out.println(currentUser);
     }
 
     public void tornaIndietro(ActionEvent e) throws IOException {
@@ -262,6 +264,7 @@ public class RisultatiCittaController {
 
         HomepageController controller = loader.getController();
         controller.setLoggedUser(currentUser);
+        controller.userCheck();
         controller.setConnectionSocket(socket, in, out);
 
 

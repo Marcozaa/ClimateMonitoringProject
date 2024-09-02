@@ -21,7 +21,7 @@ import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import climatemonitoringserver.*;
 /**
  * Questa classe gestisce la creazione di un nuovo centro di monitoraggio
  *

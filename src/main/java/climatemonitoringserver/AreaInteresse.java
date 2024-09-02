@@ -1,4 +1,4 @@
-package com.example.climatemonitoringapp;
+package climatemonitoringserver;
 
 import java.io.Serializable;
 
@@ -16,6 +16,7 @@ public class AreaInteresse implements Serializable {
     private Double coordX;
     private Double coordY;
     private String stato;
+    private int id;
 
 
     /*public AreaInteresse(String nome, String stato, String coordX, String coordY) {
@@ -36,6 +37,11 @@ public class AreaInteresse implements Serializable {
         this.coordY = coordY;
         this.stato = stato;
     }
+    
+    public AreaInteresse(String nome, int id) {
+        this.nome = nome;
+        this.id = id;
+    }
 
     /**
      * Metodo che restituisce il nome dell'area di interesse
@@ -43,6 +49,14 @@ public class AreaInteresse implements Serializable {
      */
     public String getNome() {
         return nome;
+    }
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**

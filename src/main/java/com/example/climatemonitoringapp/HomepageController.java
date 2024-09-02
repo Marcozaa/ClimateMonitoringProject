@@ -89,6 +89,8 @@ public class HomepageController {
         RisultatiCittaController rcController = loader.getController();
 
         rcController.displayName(city);
+        rcController.setCurrentUser(currentUser);
+        System.out.println(currentUser + " homepagecontroller");
         rcController.setCittaCercata(city,socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -144,7 +146,8 @@ public class HomepageController {
 
             InserimentoDatiController idController = loader.getController();
             idController.setCurrentUser(currentUser);
-            idController.fillOptions();
+            idController.setConnectionSocket(socket, in, out);
+            //idController.fillOptions();
 
             stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             scene = new Scene(root);

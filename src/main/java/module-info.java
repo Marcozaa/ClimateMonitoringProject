@@ -3,6 +3,7 @@ module com.example.climatemonitoringapp {
     requires javafx.fxml;
     //requires AnimateFX;
     requires java.sql;
+	requires javafx.graphics;
 
 
     opens com.example.climatemonitoringapp to javafx.fxml;
