@@ -9,6 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
+
 /**
  * Componente che gestisce la visualizzazione dei dati di un'area d'interesse
  */
@@ -27,6 +31,12 @@ public class AreaResultController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private User currentUser;
+
+    private Socket socket;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
 
     public void setAreaName(String name){
         areaName.setText(name);
@@ -52,6 +62,11 @@ public class AreaResultController {
     }
 
 
+    /**
+     * Questo metodo permette di visualizzare i dati dell'area di interesse, (quando si clicca sul bottone "Visualizza")
+     * @param e
+     * @throws Exception
+     */
     public void visualizzaDatiArea(ActionEvent e) throws Exception{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("InformazioniMeteoArea.fxml"));
         root = loader.load();
@@ -60,11 +75,25 @@ public class AreaResultController {
 
         controller.setNomeArea(areaName.getText());
         controller.fillScene();
+        controller.setCurrentUser(currentUser);
+        controller.setConnectionSocket(socket, in, out);
+        controller.getRilevazioni();
 
 
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        this.in = in;
+        this.out = out;
+    }
+
+    public void setCurrentUser(User currentUser){
+        this.currentUser = currentUser;
+        System.out.println(currentUser);
     }
 }

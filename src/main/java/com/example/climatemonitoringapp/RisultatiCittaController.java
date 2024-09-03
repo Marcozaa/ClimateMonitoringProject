@@ -238,6 +238,9 @@ public class RisultatiCittaController {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("AreaResult.fxml"));
                 AnchorPane pane = loader.load();
                 AreaResultController arc = loader.getController();
+                arc.setCurrentUser(currentUser);
+                arc.setConnectionSocket(socket, in, out);
+
                 arc.setAreaName(aree.get(j).getNome());
                 arc.setAreaState(aree.get(j).getStato());
                 arc.setAreaCoords(aree.get(j).getCoordX() + "N, " + aree.get(j).getCoordY() + "E");

@@ -1,5 +1,6 @@
 package com.example.climatemonitoringapp;
 
+import climatemonitoringserver.Rilevazione;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.util.*;
 
 /**
@@ -28,6 +27,9 @@ public class InformazioniMeteoAreaController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private User currentUser;
+
 
     @FXML
     private Label nomeAreaLabel;
@@ -65,6 +67,11 @@ public class InformazioniMeteoAreaController {
     @FXML
     private Label mediaMassa;
 
+    private Socket socket;
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
+
+
 
 
 
@@ -74,8 +81,10 @@ public class InformazioniMeteoAreaController {
 
 
 
+
     public void fillScene() throws IOException {
         List<List<String>> parametriArea = new ArrayList<>(); // Contiene i parametri di registrazione di un'area (es. nomeCentro,vento, timestamp, ecc.)
+        /*
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/parametriClimatici.dati.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -122,7 +131,12 @@ public class InformazioniMeteoAreaController {
 
         fillStats();
 
+         */
+
     }
+
+
+
 
     /**
      * Aggiunge un valore alla lista di rilevazioni di un determinato tipo
@@ -190,11 +204,79 @@ public class InformazioniMeteoAreaController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("homepage.fxml"));
         root = loader.load();
 
+        HomepageController controller = loader.getController();
+        if(currentUser!=null) {
+            controller.setLoggedUser(currentUser);
+        }
+        controller.userCheck();
+        controller.setConnectionSocket(socket, in, out);
+
 
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        this.in = in;
+        this.out = out;
+    }
+
+    public void setCurrentUser(User currentUser){
+        this.currentUser = currentUser;
+        System.out.println(currentUser);
+    }
+
+    public void getRilevazioni(){
+        try {
+            out.writeObject("getRilevazioniCitta");
+            out.writeObject(nomeArea);
+            List< Rilevazione> rilevazioni = (List<Rilevazione>) in.readObject();
+            for (Rilevazione r : rilevazioni) {
+                System.out.println(r.getPressione());
+            }
+
+            if(rilevazioni.size() == 0) {
+                Label label = new Label("Non sono ancora state inserite rilevazioni per questa Area");
+                label.setLayoutY(offsetY+=150);
+                anchorPane2.getChildren().add(label);
+                vbox.getChildren().add(anchorPane2);
+            }else{
+                addRilevazioni(rilevazioni);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void addRilevazioni(List<Rilevazione> rilevazioni){
+
+        for(Rilevazione r : rilevazioni){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("DatiMeteoAreaComponent.fxml"));
+            AnchorPane pane = null;
+            try {
+                pane = loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            DatiMeteoAreaComponentController datiController = loader.getController();
+            datiController.setNomeCentroLabel(r.getNomeCentroMonitoraggio());
+            datiController.setVentoLabel(String.valueOf(r.getVento()));
+            datiController.setUmiditaLabel(String.valueOf(r.getUmidita()));
+            datiController.setPressioneLabel(String.valueOf(r.getPressione()));
+            datiController.setTemperaturaLabel(String.valueOf(r.getTemperatura()));
+            datiController.setPrecipitazioniLabel(String.valueOf(r.getPrecipitazioni()));
+            datiController.setAltitudineLabel(String.valueOf(r.getAltitudineGhiacciai()));
+            datiController.setMassaLabel(String.valueOf(r.getMassaGhiacciai()));
+            datiController.setDataLabel(r.getDataRilevazione());
+            datiController.setOraLabel(r.getOraRilevazione());
+            pane.setLayoutY(offsetY+=150);
+            vbox.getChildren().add(pane);
+        }
+
     }
 
 
