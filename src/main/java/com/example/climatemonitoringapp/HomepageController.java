@@ -90,6 +90,7 @@ public class HomepageController {
 
         rcController.displayName(city);
         rcController.setCurrentUser(currentUser);
+
         System.out.println(currentUser + " homepagecontroller");
         rcController.setCittaCercata(city,socket, in, out);
 
@@ -187,6 +188,9 @@ public class HomepageController {
         }
 
         RisultatiCittaController rcController = loader.getController();
+
+        rcController.setCurrentUser(currentUser);
+        rcController.setConnectionSocket(socket, in, out);
 
         rcController.filterByCoordinates(new Coordinate(Double.parseDouble(latitudine), Double.parseDouble(longitudine)));
 

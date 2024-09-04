@@ -54,7 +54,8 @@ public class AreaResultController {
      */
     public void setDistance(double distance){
         this.distance = distance;
-        distanzaLabel.setText("Distanza " + String.valueOf(distance) + " km");
+        distance = Math.round(distance * 100.0) / 100.0; // Arrotonda a 2 decimali
+        distanzaLabel.setText("Distanza: " + String.valueOf(distance) + " km");
     }
 
     public void setAreaDistance(){

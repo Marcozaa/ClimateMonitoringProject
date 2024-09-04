@@ -108,7 +108,38 @@ public class RisultatiCittaController {
      */
     public void filterByCoordinates(Coordinate coordinate) throws IOException {
         List<List<String>> records = new ArrayList<>();
-        List<Double> distances = new ArrayList<>();
+        List<Double> distanze = new ArrayList<>();
+
+        try {
+            out.writeObject("getAreeByCoordinate");
+            out.writeObject(coordinate.getLat());
+            out.writeObject(coordinate.getLon());
+            List<AreaInteresse> aree = (List<AreaInteresse>) in.readObject();
+            for (AreaInteresse a : aree) {
+                System.out.println(a.getNome());
+            }
+
+            for (int j = 0; j < aree.size(); j++) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AreaResult.fxml"));
+                AnchorPane pane = loader.load();
+                AreaResultController arc = loader.getController();
+                arc.setCurrentUser(currentUser);
+                arc.setConnectionSocket(socket, in, out);
+
+                arc.setAreaName(aree.get(j).getNome());
+                arc.setAreaState(aree.get(j).getStato());
+                arc.setAreaCoords(aree.get(j).getCoordX() + "N, " + aree.get(j).getCoordY() + "E");
+                arc.setDistance(aree.get(j).getDistanza());
+                //Button button = new Button("Button " + i + " " + j); //create new Button
+                //button.setLayoutX(30 * i); //set x coordinate
+                vbox.getChildren().add(pane);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("risultaticittacontroller");
+        }
+
+        /*
         try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/AreeInteresse.csv"))){
             String line;
             while ((line = br.readLine()) != null) {
@@ -143,6 +174,8 @@ public class RisultatiCittaController {
             vbox.getChildren().add(pane);
 
         }
+
+        */
 
 
     }
