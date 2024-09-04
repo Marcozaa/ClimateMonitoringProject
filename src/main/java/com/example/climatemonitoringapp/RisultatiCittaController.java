@@ -126,6 +126,7 @@ public class RisultatiCittaController {
                 arc.setCurrentUser(currentUser);
                 arc.setConnectionSocket(socket, in, out);
 
+
                 arc.setAreaName(aree.get(j).getNome());
                 arc.setAreaState(aree.get(j).getStato());
                 arc.setAreaCoords(aree.get(j).getCoordX() + "N, " + aree.get(j).getCoordY() + "E");
@@ -299,7 +300,9 @@ public class RisultatiCittaController {
         root = loader.load();
 
         HomepageController controller = loader.getController();
-        controller.setLoggedUser(currentUser);
+        if(currentUser != null) {
+            controller.setLoggedUser(currentUser);
+        }
         controller.userCheck();
         controller.setConnectionSocket(socket, in, out);
 
@@ -309,4 +312,8 @@ public class RisultatiCittaController {
         stage.setScene(scene);
     }
 
+    public void setCittaCercata(String stringaCoord) {
+        // in caso di ricerca per coordinate si imposta come testo della label in alto a sinistra della UI le coordinate inserite
+        cittaLabel.setText(stringaCoord);
+    }
 }

@@ -191,6 +191,7 @@ public class HomepageController {
 
         rcController.setCurrentUser(currentUser);
         rcController.setConnectionSocket(socket, in, out);
+        rcController.setCittaCercata("Ricerca per coordinate: " + latitudine + "N " + longitudine + "E");
 
         rcController.filterByCoordinates(new Coordinate(Double.parseDouble(latitudine), Double.parseDouble(longitudine)));
 
