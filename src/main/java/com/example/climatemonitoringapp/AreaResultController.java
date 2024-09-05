@@ -79,6 +79,7 @@ public class AreaResultController {
         controller.setCurrentUser(currentUser);
         controller.setConnectionSocket(socket, in, out);
         controller.getRilevazioni();
+        controller.getStatistics();
 
 
 

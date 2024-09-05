@@ -30,6 +30,8 @@ public class InformazioniMeteoAreaController {
 
     private User currentUser;
 
+    
+
 
     @FXML
     private Label nomeAreaLabel;
@@ -218,11 +220,6 @@ public class InformazioniMeteoAreaController {
         stage.setScene(scene);
     }
 
-    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
-        this.socket = socket;
-        this.in = in;
-        this.out = out;
-    }
 
     public void setCurrentUser(User currentUser){
         this.currentUser = currentUser;
@@ -247,10 +244,51 @@ public class InformazioniMeteoAreaController {
                 addRilevazioni(rilevazioni);
             }
 
+            nRilevazioniVento.setText(String.valueOf(rilevazioni.size()));
+            nRilevazioniPrecipitazioni.setText(String.valueOf(rilevazioni.size()));
+            nRilevazioniTemperatura.setText(String.valueOf(rilevazioni.size()));
+            nRilevazioniUmidita.setText(String.valueOf(rilevazioni.size()));
+            nRilevazioniPressione.setText(String.valueOf(rilevazioni.size()));
+            nRilevazioniAltitudine.setText(String.valueOf(rilevazioni.size()));
+            nRilevazioniMassa.setText(String.valueOf(rilevazioni.size()));
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public void getStatistics(){
+        try {
+            out.writeObject("getStatistics");
+            out.writeObject(nomeArea);
+            List<Double> rilevazioni = (List<Double>) in.readObject();
+            for (Double r : rilevazioni) {
+                System.out.println(r);
+            }
+            mediaTemperatura.setText(String.valueOf(rilevazioni.get(0)));
+            mediaUmidita.setText(String.valueOf(rilevazioni.get(1)));
+            mediaPressione.setText(String.valueOf(rilevazioni.get(2)));
+            mediaPrecipitazioni.setText(String.valueOf(rilevazioni.get(3)));
+            mediaAltitudine.setText(String.valueOf(rilevazioni.get(4)));
+            mediaMassa.setText(String.valueOf(rilevazioni.get(5)));
+            mediaVento.setText(String.valueOf(rilevazioni.get(6)));
+
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            }
+    }
+    
+    public void setConnectionSocket(Socket socket, ObjectInputStream in, ObjectOutputStream out){
+        this.socket = socket;
+        this.in=in;
+        this.out=out;
+    }
+
 
     private void addRilevazioni(List<Rilevazione> rilevazioni){
 
