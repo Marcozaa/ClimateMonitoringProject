@@ -66,7 +66,7 @@
          </font>
       </Label>
       <TextField fx:id="scoreVento" layoutX="239.0" layoutY="146.0" prefHeight="25.0" prefWidth="40.0" />
-      <Button fx:id="buttonInserimentoDati" layoutX="484.0" layoutY="326.0" mnemonicParsing="false" onAction="#inserisciDati" prefHeight="57.0" prefWidth="95.0" text="Button" />
+      <Button fx:id="buttonInserimentoDati" layoutX="484.0" layoutY="326.0" mnemonicParsing="false" onAction="#inserisciDati" prefHeight="57.0" prefWidth="95.0" text="Inserisci valori" />
       <TextField fx:id="scoreUmidita" layoutX="239.0" layoutY="176.0" prefHeight="25.0" prefWidth="40.0" />
       <TextField fx:id="scorePressione" layoutX="239.0" layoutY="207.0" prefHeight="25.0" prefWidth="40.0" />
       <TextField fx:id="scoreTemperatura" layoutX="239.0" layoutY="238.0" prefHeight="25.0" prefWidth="40.0" />
