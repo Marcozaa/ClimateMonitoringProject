@@ -9,11 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="ricerca area per coordinate">
+    <list default="true" id="3948a451-aa98-4ba6-8bb7-38e9ced31a3c" name="Changes" comment="modifiche a sviste">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/climatemonitoringserver/AreaInteresse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/climatemonitoringserver/AreaInteresse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/HomepageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RisultatiCittaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RisultatiCittaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RegistrazioneOperatoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/climatemonitoringapp/RegistrazioneOperatoreController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

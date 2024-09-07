@@ -130,7 +130,27 @@ public class RegistrazioneOperatoreController {
 	        out.writeObject(cf);
 	        out.writeObject(email);
 	        out.writeObject(password);
-		} catch (IOException e1) {
+
+            if(in.readObject().equals("Operator registered")) {
+            	System.out.println("Operatore registrato");
+                Label label = new Label("Operatore registrato con successo!");
+                label.setTextFill(javafx.scene.paint.Color.GREEN);
+                pannelloAncora.getChildren().add(label);
+                label.setMaxWidth(Double.MAX_VALUE);
+                AnchorPane.setLeftAnchor(label, 0.0);
+                AnchorPane.setRightAnchor(label, 0.0);
+                label.setAlignment(Pos.CENTER);
+            }else {
+                	System.out.println("Errore nella registrazione");
+                    Label label = new Label("Errore nella registrazione");
+                    label.setTextFill(javafx.scene.paint.Color.RED);
+                    pannelloAncora.getChildren().add(label);
+                    label.setMaxWidth(Double.MAX_VALUE);
+                    AnchorPane.setLeftAnchor(label, 0.0);
+                    AnchorPane.setRightAnchor(label, 0.0);
+                    label.setAlignment(Pos.CENTER);
+            }
+		} catch (IOException | ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
@@ -149,6 +169,7 @@ public class RegistrazioneOperatoreController {
         root = loader.load();
         
         LoginOperatoreController controller = loader.getController();
+
         controller.setConnectionSocket(socket, in, out);
 
         stage = (Stage)((Node)e.getSource()).getScene().getWindow();
