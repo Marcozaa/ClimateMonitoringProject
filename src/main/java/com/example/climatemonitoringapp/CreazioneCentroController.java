@@ -1,5 +1,6 @@
 package com.example.climatemonitoringapp;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -47,6 +48,9 @@ public class CreazioneCentroController {
     private List<AreaInteresse> areeInteresseSelezionate = new ArrayList<>();
     private ArrayList<String> areeInteresse = new ArrayList<>();
 
+    private List<AreaInteresse> allCities = new ArrayList<>();
+
+
     private User currentUser;
 
 
@@ -67,8 +71,68 @@ public class CreazioneCentroController {
         
         
 
-        List<List<String>> records = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/AreeInteresse.csv"))){
+
+        
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                while(socket == null){
+                    try {
+                        System.out.println("Threads sleep for 100 milsec...");
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                
+                try {
+                    out.writeObject("getAllCity");
+                    allCities = (List<AreaInteresse>) in.readObject();
+                    System.out.println("All cities: ");
+                    for (AreaInteresse city : allCities) {
+                        System.out.println(city);
+                    }
+
+                    for (int i = 0; i < allCities.size(); i++) {
+                                CheckBox cb = new CheckBox(allCities.get(i).getNome());
+                                System.out.println("CheckBox con testo "+allCities.get(i).getNome());
+                                CustomMenuItem item = new CustomMenuItem(cb);
+                                item.setHideOnClick(false);
+                                cb.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                                    @Override
+                                    public void handle(MouseEvent mouseEvent) {
+                                        if (cb.isSelected()) {
+                                            System.out.println(cb.getText()+" Added");
+                                            areeInteresseSelezionate.add(new AreaInteresse(cb.getText()));
+                                            areeInteresse.add(cb.getText());
+                                            stampaAreeInteresseSelezionate(areeInteresseSelezionate);
+                                        } else {
+                                            System.out.println(cb.getText()+" Removed");
+                                            rimuoviAreaInteresseSelezionata(cb.getText(), areeInteresseSelezionate);
+                                            areeInteresse.remove(cb.getText());
+                                            stampaAreeInteresseSelezionate(areeInteresseSelezionate);
+                                        }
+                                    }
+                                });
+                                menuButton.getItems().add(item);
+                            }
+                            System.out.println("MenuButton: items");
+                            System.out.println(menuButton.getItems());
+
+
+                } catch (Exception e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                
+
+
+            }
+            });
+
+        
+        
+        /*try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/AreeInteresse.csv"))){
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
@@ -77,31 +141,11 @@ public class CreazioneCentroController {
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
+        }*/
+        
+        
 
-        for (int i = 0; i < records.size(); i++) {
-            CheckBox cb = new CheckBox(records.get(i).get(0));
-            CustomMenuItem item = new CustomMenuItem(cb);
-            item.setHideOnClick(false);
-            cb.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent mouseEvent) {
-                    if (cb.isSelected()) {
-                        System.out.println(cb.getText()+" Added");
-                        areeInteresseSelezionate.add(new AreaInteresse(cb.getText()));
-                        areeInteresse.add(cb.getText());
-                        stampaAreeInteresseSelezionate(areeInteresseSelezionate);
-                    } else {
-                        System.out.println(cb.getText()+" Removed");
-                        rimuoviAreaInteresseSelezionata(cb.getText(), areeInteresseSelezionate);
-                        areeInteresse.remove(cb.getText());
-                        stampaAreeInteresseSelezionate(areeInteresseSelezionate);
-                    }
-                }
-            });
-            menuButton.getItems().add(item);
-        }
-        System.out.println(menuButton.getItems());
+
         
         
        
