@@ -140,57 +140,7 @@ public class InformazioniMeteoAreaController {
 
 
 
-    /**
-     * Aggiunge un valore alla lista di rilevazioni di un determinato tipo
-     *
-     */
-    public void fillStats(){
-        //List<List<Integer>> rilevazioniSpecifiche = new ArrayList<>(); // Contiene le rilevazioni di un determinato tipo (es. vento per record[0]))
-        Map<String, List<Integer>> rilevazioniSpecifiche = new HashMap<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/parametriClimatici.dati.csv"))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                System.out.println(line);
-                System.out.println("Lunghezza: " + values.length);
-                if(values.length == 11 ){
-                    if(values[1].equals(nomeArea)) {
-                        addScores(rilevazioniSpecifiche, "vento", Integer.parseInt(values[2]));
-                        addScores(rilevazioniSpecifiche, "umidita", Integer.parseInt(values[3]));
-                        addScores(rilevazioniSpecifiche, "pressione", Integer.parseInt(values[4]));
-                        addScores(rilevazioniSpecifiche, "temperatura", Integer.parseInt(values[5]));
-                        addScores(rilevazioniSpecifiche, "precipitazioni", Integer.parseInt(values[6]));
-                        addScores(rilevazioniSpecifiche, "altitudine", Integer.parseInt(values[7]));
-                        addScores(rilevazioniSpecifiche, "massa", Integer.parseInt(values[8]));
 
-
-                    }
-                }
-
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        System.out.println(rilevazioniSpecifiche);
-
-        nRilevazioniVento.setText(String.valueOf(rilevazioniSpecifiche.get("vento").size()));
-        nRilevazioniUmidita.setText(String.valueOf(rilevazioniSpecifiche.get("umidita").size()));
-        nRilevazioniPressione.setText(String.valueOf(rilevazioniSpecifiche.get("pressione").size()));
-        nRilevazioniTemperatura.setText(String.valueOf(rilevazioniSpecifiche.get("temperatura").size()));
-        nRilevazioniPrecipitazioni.setText(String.valueOf(rilevazioniSpecifiche.get("precipitazioni").size()));
-        nRilevazioniAltitudine.setText(String.valueOf(rilevazioniSpecifiche.get("altitudine").size()));
-        nRilevazioniMassa.setText(String.valueOf(rilevazioniSpecifiche.get("massa").size()));
-
-        mediaVento.setText(String.valueOf(rilevazioniSpecifiche.get("vento").stream().mapToInt(Integer::intValue).average().orElse(0)));
-        mediaUmidita.setText(String.valueOf(rilevazioniSpecifiche.get("umidita").stream().mapToInt(Integer::intValue).average().orElse(0)));
-        mediaPressione.setText(String.valueOf(rilevazioniSpecifiche.get("pressione").stream().mapToInt(Integer::intValue).average().orElse(0)));
-        mediaTemperatura.setText(String.valueOf(rilevazioniSpecifiche.get("temperatura").stream().mapToInt(Integer::intValue).average().orElse(0)));
-        mediaPrecipitazioni.setText(String.valueOf(rilevazioniSpecifiche.get("precipitazioni").stream().mapToInt(Integer::intValue).average().orElse(0)));
-        mediaAltitudine.setText(String.valueOf(rilevazioniSpecifiche.get("altitudine").stream().mapToInt(Integer::intValue).average().orElse(0)));
-        mediaMassa.setText(String.valueOf(rilevazioniSpecifiche.get("massa").stream().mapToInt(Integer::intValue).average().orElse(0)));
-
-    }
 
     private static void addScores(Map<String, List<Integer>> weatherScores, String condition, int score) {
         weatherScores.computeIfAbsent(condition, k -> new ArrayList<>()).add(score);
@@ -232,7 +182,17 @@ public class InformazioniMeteoAreaController {
             out.writeObject(nomeArea);
             List< Rilevazione> rilevazioni = (List<Rilevazione>) in.readObject();
             for (Rilevazione r : rilevazioni) {
-                System.out.println(r.getPressione());
+                System.out.println(r.getNomeCentroMonitoraggio() + " ");
+                System.out.println(r.getVento() + " ");
+                System.out.println(r.getUmidita() + " ");
+                System.out.println(r.getPressione() + " ");
+                System.out.println(r.getTemperatura() + " ");
+                System.out.println(r.getPrecipitazioni() + " ");
+                System.out.println(r.getAltitudineGhiacciai() + " ");
+                System.out.println(r.getMassaGhiacciai() + " ");
+                System.out.println(r.getDataRilevazione() + " ");
+                System.out.println(r.getOraRilevazione() + " ");
+                
             }
 
             if(rilevazioni.size() == 0) {
